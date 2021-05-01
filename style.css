@@ -6,3 +6,8 @@
 section {
   padding-top: 4rem;
 }
+
+.thumbnail {
+  width: 100px;
+  max-width: 100%;
+}
