@@ -18,3 +18,7 @@ section {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
+
+p + ol {
+  margin-top: -10px;
+}
