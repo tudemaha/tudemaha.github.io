@@ -1,261 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-
-    <!-- Bootstrap Icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 
-    <title>My Portfolio | Tude Maha</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+
+    <!-- typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <title>Tude Maha | Home Page</title>
+
   </head>
-  <body id="home">
+  <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background-color: #212e53;">
-      <div class="container">
-        <a class="navbar-brand" href="#">Tude Maha</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#skills">Skills</a>
-            <a class="nav-link" href="#projects">Projects</a>
-            <a class="nav-link" href="#contact">Contact</a>
-          </div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
+        <div class="container">
+            <a class="navbar-brand h1 mb-0 fw-bold d-flex align-items-center" href="#">
+                <img src="img/nav-icon.png" alt="Tude Maha Icon" height="28" class="d-inline-block pe-2">
+                Tude Maha
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#explore-me">Explore</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Social Media</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="https://instagram.com/tudemaha" target="_blank" >Instagram</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
-    <!-- Navbar End -->
+    <!-- End of Navbar -->
 
     <!-- Jumbotron -->
-    <section class="jumbotron text-center">
-      <img src="img/mahardika.jpg" alt="Tude Maha" width="200" class="rounded-circle img-thumbnail" />
-      <h1 class="display-4">Tude Maha</h1>
-      <p class="lead">Student | Junior Developer</p>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,128L40,117.3C80,107,160,85,240,112C320,139,400,213,480,218.7C560,224,640,160,720,154.7C800,149,880,203,960,213.3C1040,224,1120,192,1200,181.3C1280,171,1360,181,1400,186.7L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
-    </section>
-    <!-- Jumbotron End -->
-
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col text-center">
-            <h2>About Me</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-5">
-            <p>I am a high school graduate and looking for university. I will continue my study at university. I interested in programming since junior high school.</p>
-          </div>
-          <div class="col-md-5">
-            <p>
-              I have created some small projects. Those are a receipt application and a home automation named Teleswitch (Telegram Switch).
-            </p>
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#8ac0de" fill-opacity="1" d="M0,32L34.3,58.7C68.6,85,137,139,206,138.7C274.3,139,343,85,411,90.7C480,96,549,160,617,165.3C685.7,171,754,117,823,90.7C891.4,64,960,64,1029,80C1097.1,96,1166,128,1234,149.3C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
-    </section>
-    <!-- About End -->
-
-    <!-- Skills -->
-    <section id="skills" style="background-color: #8ac0de">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col text-center">
-            <h2>My Skills</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center align-items-center mb-2">
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/html.png" alt="HTML" class="thumbnail" />
-          </div>
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/css.png" alt="CSS" class="thumbnail" />
-          </div>
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/bootstrap.png" alt="Bootstrap" class="thumbnail" />
-          </div>
-        </div>
-        <div class="row justify-content-center align-items-center">
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/c.png" alt="C" class="thumbnail" />
-          </div>
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/cs.png" alt="C#" class="thumbnail" />
-          </div>
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/vb.png" alt="Visual Basic .NET" class="thumbnail" />
-          </div>
-          <div class="col-2 mb-3 text-center">
-            <img src="img/skills/arduino.png" alt="Arduino" class="thumbnail" />
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#ffffff"
-          fill-opacity="1"
-          d="M0,0L26.7,26.7C53.3,53,107,107,160,122.7C213.3,139,267,117,320,90.7C373.3,64,427,32,480,32C533.3,32,587,64,640,112C693.3,160,747,224,800,213.3C853.3,203,907,117,960,74.7C1013.3,32,1067,32,1120,32C1173.3,32,1227,32,1280,42.7C1333.3,53,1387,75,1413,85.3L1440,96L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
-        ></path>
-      </svg>
-    </section>
-    <!-- Skills End -->
-
-    <!-- Projects -->
-    <section id="projects">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col text-center">
-            <h2>My Projects</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-3">
-            <div class="card mb-3">
-              <img src="img/projects/1.jpg" alt="Receipt Application" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-tittle"><i>Koperasi</i> Uttama's Receipt Application</h5>
-                <p class="card-text">Receipt application of <i>Koperasi</i> Uttama. A school cooperative of Junior High School Number 2 Kediri, Tabanan.</p>
-                <p class="card-text">Made using:
-                  <ol>
-                    <li>Visual Basic .NET</li>
-                  </ol>
-                </p>
-                <p class="card-text"><small class="text-muted">Project Year: 2019</small></p>
-              </div>
+    <section id="jumbotron">
+        <div class="container">
+            <div class="row justify-content-around align-items-end">
+                <div class="col-md-6 order-last order-md-first text-center text-md-start jumbotron-text">
+                    <h1 class="display-5 fw-bolder"><span id="welcome"></span></h1>
+                    <p class="lead">
+                        Hello! I'm Tude Maha, a junior developer. Now, I'm as a student that studying informatics in Bali.
+                        Welcome to my home page, please scroll down to explore more about me.
+                    </p>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center order-first order-md-last">
+                    <div class="profile-frame">
+                        <img class="profile-picture" src="img/profile.png" alt="Profile">
+                        <h4 class="profile-name">Tude Maha</h4>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card mb-3">
-              <img src="img/projects/2.jpg" alt="Teleswitch" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-tittle">Teleswitch (Telegram Switch)</h5>
-                <p class="card-text">Long distance digital switch based on Telegram. This project was created with my partner to take part in  <i>Lomba Peneliti Belia Bali</i> (Bali Young Researcher Competition 2020. The 2<sup>nd</sup> winner.</p>
-                <p class="card-text"> Made using:
-                  <ol>
-                    <li>C</li>
-                    <li>Arduino</li>
-                    <li>NodeMCU</li>
-                  </ol>
-                </p>
-                <p class="card-text"><small class="text-muted">Project Year: 2020</small></p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#8ac0de" fill-opacity="1" d="M0,64L26.7,85.3C53.3,107,107,149,160,170.7C213.3,192,267,192,320,181.3C373.3,171,427,149,480,138.7C533.3,128,587,128,640,149.3C693.3,171,747,213,800,234.7C853.3,256,907,256,960,229.3C1013.3,203,1067,149,1120,154.7C1173.3,160,1227,224,1280,213.3C1333.3,203,1387,117,1413,74.7L1440,32L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path></svg>
     </section>
-    <!-- Projects End -->
+    
+    <!-- End of Jumbotron -->
 
-    <!-- Contact -->
-    <section id="contact" style="background-color: #8ac0de">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>Contact Me</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-              <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-              </symbol>
-              <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-              </symbol>
-              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </symbol>
-            </svg>
-            <div class="alert alert-success alert-dismissible fade show d-flex d-none align-items-center my-alert" role="alert">
-              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-              <div>
-                Thank you, your messages sent successfully.
-              </div>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+
+    <!-- Explore me -->
+    <section id="explore">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#353652" fill-opacity="1" d="M0,160L48,133.3C96,107,192,53,288,64C384,75,480,149,576,202.7C672,256,768,288,864,256C960,224,1056,128,1152,122.7C1248,117,1344,203,1392,245.3L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+        <div class="container py-5" id="explore-me">
+            <div class="row text-center">
+                <div class="col pt-3 pb-1">
+                    <h1>Explore Me</h1>
+                </div>
             </div>
-
-            <form name="tudemaha-contact">
-              <div class="mb-3">
-                <label for="Name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" name="full_name"/>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email"/>
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Messages</label>
-                <textarea class="form-control" id="pesan" rows="3" name="messages"></textarea>
-              </div>
-              <button type="submit" class="btn text-white btn-send" style="background-color: #212e53;">Send</button>
-
-              <button class="btn text-white btn-loading d-none" style="background-color: #212e53;" type="button" disabled>
-                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                Loading...
-              </button>
-            </form>
-          </div>
+            <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+                <div class="col">
+                    <div class="card" data-aos="fade-right" data-aos-offset="250">
+                        <a href="https://tudemaha.github.io" target="_blank"><img src="img/portfolio.png" alt="Portfolio" class="card-img-top"></a>
+                        <div class="card-body text-center">
+                            <h5 class="card-tittle">Portfolio</h5>
+                            <p class="card-text">
+                                My personal portfolio website (and also be my GitHub Pages) contains a piece information about me, my skills, projects, and a form to contact me.
+                            </p>
+                            <a class="btn" href="https://tudemaha.github.io" target="_blank">
+                                My Portfolio 
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" data-aos="fade-left" data-aos-offset="250">
+                        <a href="https://github.com/tudemaha" target="_blank"><img src="img/github.png" alt="Github" class="card-img-top"></a>
+                        <div class="card-body text-center">
+                            <h5 class="card-tittle">GitHub</h5>
+                            <p class="card-text">
+                                GitHub to store and share some little projects for my lectures and also my hobbies. Feel free to review, fork, and do a pull request to my code.
+                            </p>
+                            <a class="btn" href="https://github.com/tudemaha" target="_blank">
+                                My GitHub 
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" data-aos="fade-up">
+                        <a href="https://www.youtube.com/channel/UC_1ebtlaH6VQereFmkmqCtg" target="_blank"><img src="img/youtube.png" alt="YouTube" class="card-img-top"></a>
+                        <div class="card-body text-center">
+                            <h5 class="card-tittle">YouTube</h5>
+                            <p class="card-text">
+                                Specifically, I share about programming, eletronics, Arduino, Excel, and some tips and tricks on my YouTube channel. Just a few videos for now, but I wish I could share more.
+                            </p>
+                            <a class="btn" href="https://www.youtube.com/channel/UC_1ebtlaH6VQereFmkmqCtg" target="_blank">
+                                My YouTube Channel
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#212e53"
-          fill-opacity="1"
-          d="M0,128L40,144C80,160,160,192,240,218.7C320,245,400,267,480,229.3C560,192,640,96,720,85.3C800,75,880,149,960,160C1040,171,1120,117,1200,112C1280,107,1360,149,1400,170.7L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
     </section>
-    <!-- Contact End -->
+    <!-- end of explore me -->
 
-    <!-- Footer -->
-    <footer class="text-white text-center pb-1" style="background-color: #212e53;">
-      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://instagram.com/_mahardikaap" target="_blank" class="text-white fw-bold">Tude Maha</a></p>
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row pt-3 align-content-between">
+                <div class="col-md-6">
+                    <p class="text-center text-md-start">Created with <i class="bi bi-heart-fill text-danger"></i> by <a class="link-light" href="https://instagram.com/tudemaha">Tude Maha</a>.</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-center text-md-end">&copy; 2022 - All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
     </footer>
-    <!-- Footer End -->
+    <!-- end of footer -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
+    <!-- Typed JS -->
     <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbw7slBHPL7RaU2Jv--r4PVkQmIF2zSVJNh38h8C5pYzIBhmo6wU6tWU7fJF1pl25RMu/exec'
-      const form = document.forms['tudemaha-contact']
-      const sendBtn = document.querySelector('.btn-send')
-      const loadingBtn = document.querySelector('.btn-loading')
-      const myAlert = document.querySelector('.my-alert')
-
-      form.addEventListener('submit', e => {
-        e.preventDefault()
-        // When Submit buuton clicked
-        // Show loading button, hide send button
-        loadingBtn.classList.toggle('d-none')
-        sendBtn.classList.toggle('d-none')
-        fetch(scriptURL, {method: 'POST', body: new FormData(form)})
-          .then(response => {
-            // Show send button, hide loading button
-            loadingBtn.classList.toggle('d-none')
-            sendBtn.classList.toggle('d-none')
-            console.log('Success!', response)
-            // Show success alert
-            myAlert.classList.toggle('d-none')
-            // Reset form
-            form.reset()
-          })
-          .catch(error => console.error('Error!', error.message))
-      })
+        var welcome = new Typed('#welcome', {
+            strings: ["Welcome!"],
+            typeSpeed: 120,
+            startDelay: 80,
+            loop: true
+        });
     </script>
+
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+          delay: 100,
+          easing: 'ease-out'
+      });
+    </script>
+
+    <!-- Tilt JS -->
+    <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".profile-frame"), {
+            max: 25,
+            speed: 400
+        });
+    </script>
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,2 +1,2 @@
-# PDF files
-*.pdf
+# Ignore editing folder
+edit/
