@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,CRSV,MONO@300..1000,0.69,1,0&display=swap");
+@import "tailwindcss";
+
+@keyframes float-a {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+.animate-float-a {
+  animation: float-a 10s ease-in-out infinite;
+}
+
+@keyframes float-b {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(10px, -90px) scale(1.2);
+  }
+  66% {
+    transform: translate(40px, -40px) scale(0.8);
+  }
+}
+.animate-float-b {
+  animation: float-b 8s ease-in-out infinite;
+}
+
+.recursive-bold {
+  font-family: "Recursive", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CASL" 0.69,
+    "CRSV" 1,
+    "MONO" 0;
+}
+
+.recursive-medium {
+  font-family: "Recursive", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CASL" 0.69,
+    "CRSV" 1,
+    "MONO" 0;
+}
