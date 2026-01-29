@@ -1,194 +1,1814 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-    <!-- My CSS -->
-    <link rel="stylesheet" href="style.css">
-
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
-
-    <!-- typed.js -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <!-- AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <title>Tude Maha | Home Page</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tude Maha - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow">
-        <div class="container">
-            <a class="navbar-brand h1 mb-0 fw-bold d-flex align-items-center" href="#">
-                <img src="img/nav-icon.png" alt="Tude Maha Icon" height="28" class="d-inline-block pe-2">
-                Tude Maha
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <!-- navbar -->
+    <header
+      class="border-b border-gray-200 bg-white/80 dark:border-gray-800 dark:bg-gray-900/80 fixed z-50 w-full backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8"
+      >
+        <a href="/" class="group flex gap-3 align-middle">
+          <img src="img/nav-icon.png" alt="Tude Maha Logo" class="size-8" />
+          <span
+            class="text-xl font-bold text-gray-900 transition-colors group-hover:text-lime-600 dark:text-white group-hover:dark:text-lime-400"
+            >Tude Maha</span
+          >
+        </a>
+
+        <div class="flex flex-1 items-center justify-end">
+          <nav aria-label="Global" class="hidden md:block">
+            <ul class="flex items-center gap-6 text-sm">
+              <li>
+                <a
+                  class="rounded-md bg-lime-100 px-3 py-2 text-sm font-medium text-lime-700 dark:bg-lime-900/50 dark:text-lime-300"
+                  href="#about"
+                >
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  href="#experiences"
+                >
+                  Experiences
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  href="#projects"
+                >
+                  Projects
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  href="#skills"
+                >
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  href="#contacts"
+                >
+                  Contacts
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="flex items-center gap-4">
+            <button
+              class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+            >
+              <span class="sr-only">Toggle menu</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#explore-me">Explore</a>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Social Media</a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="https://instagram.com/tudemaha" target="_blank" >Instagram</a></li>
-                        </ul>
-                    </li>
-                </div>
-            </div>
+          </div>
         </div>
-    </nav>
-    <!-- End of Navbar -->
+      </div>
+    </header>
+    <!-- end of navbar -->
 
-    <!-- Jumbotron -->
-    <section id="jumbotron">
-        <div class="container">
-            <div class="row justify-content-around align-items-end">
-                <div class="col-md-6 order-last order-md-first text-center text-md-start jumbotron-text">
-                    <h1 class="display-5 fw-bolder"><span id="welcome"></span></h1>
-                    <p class="lead">
-                        Hello! I'm Tude Maha, a junior developer. Now, I'm as a student that studying informatics in Bali.
-                        Welcome to my home page, please scroll down to explore more about me.
-                    </p>
-                </div>
-                <div class="col-md-6 col-lg-4 text-center order-first order-md-last">
-                    <div class="profile-frame">
-                        <img class="profile-picture" src="img/profile.png" alt="Profile">
-                        <h4 class="profile-name">Tude Maha</h4>
-                    </div>
-                </div>
-            </div>
+    <!-- hero section -->
+    <section
+      class="relative h-dvh flex items-center justify-center px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden"
+    >
+      <div class="absolute inset-1">
+        <div
+          class="absolute top-1/4 left-1/4 w-96 h-96 bg-lime-500 rounded-full blur-3xl opacity-20 animate-float-a mix-blend-multiply dark:mix-blend-screen"
+        ></div>
+        <div
+          class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lime-500 rounded-full blur-3xl opacity-20 animate-float-b mix-blend-multiply dark:mix-blend-screen"
+        ></div>
+      </div>
+
+      <div class="relative max-w-4xl mx-auto">
+        <div
+          class="backdrop-blur-xl bg-white/60 dark:bg-white/10 border border-gray-200 dark:border-white/20 rounded-3xl p-12 px-20 text-center shadow-2xl"
+        >
+          <h1
+            class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Hi, <span class="recursive-bold">Tude Maha</span> here!
+          </h1>
+          <p
+            class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 mx-auto"
+          >
+            A <span class="recursive-medium">software engineer</span> who
+            focusing on backend with 4+ years of experience. Enjoy turning
+            complex problem into efficient solutions with experience across
+            backend services, APIs, and modern web technologies.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#about"
+              class="relative px-6 py-3 bg-lime-600 text-white font-semibold rounded-lg overflow-hidden group focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-all duration-300 hover:bg-lime-700"
+            >
+              <span class="relative z-10">Explore Me</span>
+              <div
+                class="absolute inset-0 bg-lime-400 opacity-0 group-hover:opacity-30 group-hover:animate-ping rounded-lg"
+              ></div>
+              <div
+                class="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+              ></div>
+            </a>
+          </div>
         </div>
+      </div>
     </section>
-    
-    <!-- End of Jumbotron -->
+    <!-- end of hero section -->
 
-    
-
-    <!-- Explore me -->
-    <section id="explore">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#353652" fill-opacity="1" d="M0,160L48,133.3C96,107,192,53,288,64C384,75,480,149,576,202.7C672,256,768,288,864,256C960,224,1056,128,1152,122.7C1248,117,1344,203,1392,245.3L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-        <div class="container py-5" id="explore-me">
-            <div class="row text-center">
-                <div class="col pt-3 pb-1">
-                    <h1>Explore Me</h1>
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
-                <div class="col">
-                    <div class="card" data-aos="fade-right" data-aos-offset="250">
-                        <a href="https://tudemaha.github.io" target="_blank"><img src="img/portfolio.png" alt="Portfolio" class="card-img-top"></a>
-                        <div class="card-body text-center">
-                            <h5 class="card-tittle">Portfolio</h5>
-                            <p class="card-text">
-                                My personal portfolio website (and also be my GitHub Pages) contains a piece information about me, my skills, projects, and a form to contact me.
-                            </p>
-                            <a class="btn" href="https://tudemaha.github.io" target="_blank">
-                                My Portfolio 
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" data-aos="fade-left" data-aos-offset="250">
-                        <a href="https://github.com/tudemaha" target="_blank"><img src="img/github.png" alt="Github" class="card-img-top"></a>
-                        <div class="card-body text-center">
-                            <h5 class="card-tittle">GitHub</h5>
-                            <p class="card-text">
-                                GitHub to store and share some little projects for my lectures and also my hobbies. Feel free to review, fork, and do a pull request to my code.
-                            </p>
-                            <a class="btn" href="https://github.com/tudemaha" target="_blank">
-                                My GitHub 
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" data-aos="fade-up">
-                        <a href="https://www.youtube.com/channel/UC_1ebtlaH6VQereFmkmqCtg" target="_blank"><img src="img/youtube.png" alt="YouTube" class="card-img-top"></a>
-                        <div class="card-body text-center">
-                            <h5 class="card-tittle">YouTube</h5>
-                            <p class="card-text">
-                                Specifically, I share about programming, eletronics, Arduino, Excel, and some tips and tricks on my YouTube channel. Just a few videos for now, but I wish I could share more.
-                            </p>
-                            <a class="btn" href="https://www.youtube.com/channel/UC_1ebtlaH6VQereFmkmqCtg" target="_blank">
-                                My YouTube Channel
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- about -->
+    <section
+      id="about"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        About Me
+      </h1>
+      <div class="flex flex-col md:flex-row w-3/4 items-center gap-3 md:gap-2">
+        <img src="img/profile.png" class="h-90" alt="Tude Maha" />
+        <div
+          class="text-gray-900 dark:text-white text-lg md:text-xl text-center md:text-left flex flex-col gap-5"
+        >
+          <p>
+            I'm a backend engineer with 4+ years of experience. I enjoy building
+            system that actually run in production. I value clarity, simplicity,
+            and solutions that scale without becoming fragile.
+          </p>
+          <p>
+            I also sharing. I share my knowledge and experience in backend and
+            cloud computing. For me, sharing leverage my connection and make me
+            understand more about what I already learned.
+          </p>
+          <p class="recursive-medium">
+            Stay curious and build in a better way!
+          </p>
         </div>
+      </div>
     </section>
-    <!-- end of explore me -->
+    <!-- end of about -->
+
+    <!-- experiences -->
+    <section
+      id="experiences"
+      class="relative flex flex-col items-center justify-center px-12 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Experiences
+      </h1>
+      <dl
+        class="relative border-l-2 border-neutral-200 dark:border-neutral-800 ml-3 w-3/4"
+      >
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Founder
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Rayaska</h3>
+              <h4>July 2025 - Present</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Manage product roadmap and technical decisions.
+                </li>
+                <li class="text-neutral-300">
+                  Monitor developer teams and make sure projects align with the
+                  requirements.
+                </li>
+                <li class="text-neutral-300">
+                  Deliver significant solutions for 4+ clients.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Software Engineer (iOS)
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Apple Developer Academy</h3>
+              <h4>March - December 2025</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Worked in 5 different teams to do research and development of
+                  applications/producs in the Apple ecosystem.
+                </li>
+                <li class="text-neutral-300">
+                  Developed and released 3 apps on the Apple App Store and 2
+                  additional apps up to the testing phase.
+                </li>
+                <li class="text-neutral-300">
+                  Explored accessibility features provided by Apple on their
+                  devices and developed apps that are compatible with the
+                  accessibility features.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Speaker
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Google Developer Group Bali</h3>
+              <h4>December 2025</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Conducted a technical workshop delivering hands-on session on
+                  self-host n8n solution using Google Cloud Run.
+                </li>
+                <li class="text-neutral-300">
+                  Led a comprehensive session focusing on practical
+                  implementation to approximately 30 attendees.
+                </li>
+                <li class="text-neutral-300">
+                  Mentored attendees during the sessioin by answering technical
+                  questions and providing guidances.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Backend & Cloud Engineer
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">CIRHSS</h3>
+              <h4>October 2023 - present</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Developed and maintained 4 backend services to work optimally
+                  in CIRHSS's projects.
+                </li>
+                <li class="text-neutral-300">
+                  Designed and hosted 6 systems on CIRHSS's virtual private
+                  server using containerization method.
+                </li>
+                <li class="text-neutral-300">
+                  Integrated Google Cloud Storage and Cloud Function for
+                  event-driven images/audios format conversion.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Speaker
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Udayana University</h3>
+              <h4>August 2025</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Presented about artificial intelligence (AI) ethics in
+                  education to audiences of approximately 200 students.
+                </li>
+                <li class="text-neutral-300">
+                  Maintained an interactive one-hour session with students.
+                </li>
+                <li class="text-neutral-300">
+                  Addressed 4 student questions clearly and effectively during
+                  the session.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Cloud Computing Mentor
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Bangkit Academy 2024 Batch 2</h3>
+              <h4>September 2024 - January 2025</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Mentored 24 entees by providing guidance, feedback, and
+                  support for their academy journey.
+                </li>
+                <li class="text-neutral-300">
+                  Conducted 15 weekly consultaton and assisted 13 class sessions
+                  reguarly with 4.92/5 and 4.90/5 rating.
+                </li>
+                <li class="text-neutral-300">
+                  Contributed to achieving a 91% graduation rate in Bangkit 2024
+                  Batch 2.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Hybrid Cloud & Red Hat Mentee
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Infinite Learning</h3>
+              <h4>February - June 2024</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Learned the Red Hat System Administration modules in
+                  synchronous and asynchronous learning in 4 months.
+                </li>
+                <li class="text-neutral-300">
+                  Integrated Google Cloud Platform and Red Hat Ecosystem using
+                  the Red Hat Console.
+                </li>
+                <li class="text-neutral-300">
+                  Earned 5 best product by implementing a robust and scalable
+                  Apache Web Server Deployment on Red Hat Linux.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Cloud Computing Mentee
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Bangkit Academy 2023 Batch 2</h3>
+              <h4>August 2023 - January 2024</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Learned Google Cloud Platform intensively as the main cloud
+                  platform in cloud computing Path.
+                </li>
+                <li class="text-neutral-300">
+                  Earned 14 skill badges in cloud computing related
+                  technologies.
+                </li>
+                <li class="text-neutral-300">
+                  Graduated with distinction, ranking within the top 10% of
+                  cohorts in cloud computing path.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+
+        <div class="relative mb-12 pl-8 md:pl-10">
+          <span
+            class="absolute -left-3 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-lime-500 dark:bg-lime-600 text-white text-sm font-bold shadow-sm"
+          ></span>
+          <dt
+            class="text-xl md:text-2xl font-bold text-lime-600 dark:text-lime-300 -mt-1"
+          >
+            Backend Developer
+          </dt>
+          <dd
+            class="text-base md:text-lg text-neutral-700 dark:text-white leading-relaxed"
+          >
+            <div>
+              <h3 class="font-bold">Avatar Solutions</h3>
+              <h4>July 2022 - June 2023</h4>
+              <ul class="list-disc ms-4">
+                <li class="text-neutral-300">
+                  Implemented PHP programming language for the backend service.
+                </li>
+                <li class="text-neutral-300">
+                  Developed RESTful API for the information exchange used by the
+                  mobile programmers.
+                </li>
+                <li class="text-neutral-300">
+                  Learned app production flow fromt he planning until testing
+                  and deploying.
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+      </dl>
+    </section>
+    <!-- end of experiences -->
+
+    <!-- projects -->
+    <section
+      id="projects"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Projects
+      </h1>
+
+      <div class="flex gap-4 w-3/4 flex-wrap justify-center">
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative h-full z-10 bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Personal Home Server
+              </h3>
+              <p>
+                I build my personal home server to host my projects. It run on
+                an Orange Pi 3 LTS with ARM based platform. This home server
+                utilise Cloudflare Tunnel so it can be accessed through
+                internet.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Hybrid Cloud</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Linux</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Docker</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >FrankenPHP</span
+                  ><span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Cloudflare Tunnel</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                A Day
+              </h3>
+              <p>
+                A Day is a temporary camera for photos and videos. It stores
+                media up to 24 hours then delete them automatically. A Day help
+                you to keep your Photos clean and free of single-use media.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Mobile (iOS)</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Swift</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >SwiftUI</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >AVFoundation</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >WidgetKit</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >SwiftData</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a
+                    href="https://github.com/ada-Batagor/batagor"
+                    target="_blank"
+                  >
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Arca
+              </h3>
+              <p>
+                Arca gives an audio tour on statues in Bali. Arca also able to
+                explore statues in Bali, also their division into monumental and
+                spiritual statues.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Mobile (iOS)</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Swift</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >SwiftUI</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MapKit</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >AVKit</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >WidgetKit</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Supabase</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a
+                    href="https://github.com/ADA-Kalcer/kalcer"
+                    target="_blank"
+                  >
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Moodz
+              </h3>
+              <p>
+                Get music recomendations for your Instagram story. Moodz help
+                you to find the most suitable music for your photos.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Mobile (iOS)</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Swift</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >SwiftUI</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Create ML</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Core ML</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a href="https://github.com/tudemaha/moodz" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Kamus Bali & Enggano
+              </h3>
+              <p>
+                This project is part of CIRHSS's research. The dictionary gives
+                detailed translation for a word, including the usage example.
+                Backed up by community support for the translation improvement.
+                This project also supports word searches with traditional
+                scripts.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Backend</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Go</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Gin</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >GORM</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MySQL</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a href="https://bali.cirhss.org" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      Kamus Bali
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                  <a href="https://enggano.cirhss.org" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      Kamus Enggano
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Harmoni Jiwa
+              </h3>
+              <p>
+                This project is part of CIRHSS's research. Harmoni Jiwa is a
+                platform to help people with mental disorders in a rural area.
+                This platform connects doctors, volunteers, carers, and patients
+                by tracking patients' mental health.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Backend</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Go</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Gin</span
+                  >
+                  <span
+                    class="px-3 py-1 text-sm h-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MySQL</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a href="https://harmonijiwa.cirhss.org" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      Harmoni Jiwa
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Rayaska Company Profile
+              </h3>
+              <p>
+                This company profile showcases Rayaska's services and company
+                information. This website provides visitors a quick overview
+                about Rayaska.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Full Stack</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Svelte</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >SvelteKit</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Tailwind CSS</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a href="https://rayaska.com" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      Rayaska
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                Lovely Valentine
+              </h3>
+              <p>
+                Lovely Valentine was created for Valentine day. It can express
+                your love to someone by making quotes and send it with an
+                "encryption."
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Full Stack</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Go</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >net/http</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MongoDB</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a
+                    href="https://github.com/tudemaha/lovely-valentine"
+                    target="_blank"
+                  >
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                  <a href="https://val.tudemaha.my.id" target="_blank">
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      Lovely Valentine
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                MamMates
+              </h3>
+              <p>
+                Capstone project for Bangkit Academy 2023 Batch 2. MamMates
+                provides a way to reduce food waste by selling food that is
+                still edible instead of throwing it away. Machine learing
+                technologies used to determine the food classification, the food
+                rating, and the price.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Backend & Cloud</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Express</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Sequelize</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MySQL</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Cloud Storage</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Cloud SQL</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Cloud Run</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a
+                    href="https://github.com/MamMates/mammates-be"
+                    target="_blank"
+                  >
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative w-80 bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+          ></div>
+          <div
+            class="relative z-10 h-full bg-gray-900/90 backdrop-blur-sm border border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+          >
+            <div
+              class="flex flex-col gap-2 text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+            >
+              <img
+                src="img/home-server.webp"
+                class="rounded-lg"
+                alt="Personal Home Server"
+              />
+              <h3
+                class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors"
+              >
+                TrackHub
+              </h3>
+              <p>
+                TrackHub designed to track YouTube videos views and likes. It
+                can be used in a competition to detect if participants use bot
+                to gain likes.
+              </p>
+              <div>
+                <p class="mb-1">Project Scope:</p>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                  >Full Stack</span
+                >
+              </div>
+              <div>
+                <p class="mb-1">Tech Stacks:</p>
+                <div class="flex flex-wrap gap-1">
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >EJS</span
+                  >
+                  <span
+                    class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >MySQL</span
+                  >
+                </div>
+              </div>
+              <div>
+                <p class="mb-1">Related Links:</p>
+                <div class="flex flex-wrap gap-1">
+                  <a
+                    href="https://github.com/tudemaha/trackhub"
+                    target="_blank"
+                  >
+                    <span
+                      class="px-3 py-1 text-sm flex h-fit w-fit font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                    >
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L14.6 7H7q-.425 0-.712-.288T6 6t.288-.712T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17t-.712-.288T16 16z"
+                        /></svg
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of projects -->
+
+    <!-- skills -->
+    <section
+      id="skills"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Skills
+      </h1>
+      <div class="flex gap-4 flex-wrap w-3/4 justify-center">
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Backend Development
+            </h3>
+            <div>
+              <p class="mb-1">Programming Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Go
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  JavaScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  TypeScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  PHP
+                </span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Gin
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  GORM
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Express
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  NestJS
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Laravel
+                </span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-1">Tools:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Node.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bun
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Frontend Development
+            </h3>
+            <div>
+              <p class="mb-1">Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  JavaScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  TypeScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  HTML
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  CSS
+                </span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Svelte
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SvelteKit
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  React
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Next.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Tailwind CSS
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bootstrap
+                </span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-1">Tools:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Node.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bun
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Vite
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Mobile Development
+            </h3>
+            <div>
+              <p class="mb-1">Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Swift
+                </span>
+              </div>
+            </div>
+            <div>
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SwiftUI
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SwiftData
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Databases
+            </h3>
+            <div class="flex flex-wrap gap-1">
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                MySQL
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                PostgreSQL
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                SQLite
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                MongoDB
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Cloud Computing
+            </h3>
+            <div class="flex flex-wrap gap-1">
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Google Cloud Platform
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Linux
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Docker
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Terraform
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Nginx
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                FrankenPHP
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of skills -->
+
+    <!-- contacts -->
+    <section
+      id="skills"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Connect with Me
+      </h1>
+      <p
+        class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 text-center"
+      >
+        Any questions or wanna work together? Feel free to reach me out!
+      </p>
+      <div class="flex gap-3 flex-wrap">
+        <a
+          target="_blank"
+          href="mailto:tudemaha@rayaska.com"
+          class="group w-12 hover:w-72 h-12 bg-black relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-red-500 before:hover:bg-red-400 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"
+            />
+          </svg>
+
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >tudemaha@rayaska.com</span
+          >
+        </a>
+        <a
+          target="_blank"
+          href="https://github.com/tudemaha"
+          class="group w-12 hover:w-44 h-12 bg-black relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-red-500 before:hover:bg-red-400 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+            />
+          </svg>
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >tudemaha</span
+          >
+        </a>
+        <a
+          href="https://instagram.com/tudemaha"
+          target="_blank"
+          class="group w-12 hover:w-44 h-12 bg-linear-to-r from-purple-500 via-pink-500 to-orange-500 relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-pink-600 before:hover:bg-pink-500 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >@tudemaha</span
+          >
+        </a>
+        <a
+          target="_blank"
+          href="https://linkedin.com/in/tudemaha"
+          class="group w-12 hover:w-44 h-12 bg-linear-to-r from-blue-700 to-blue-800 relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-blue-600 before:hover:bg-blue-500 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            />
+          </svg>
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >in/tudemaha</span
+          >
+        </a>
+        <a
+          target="_blank"
+          href="https://youtube.com/@tudemaha"
+          class="group w-12 hover:w-44 h-12 bg-linear-to-r from-red-600 to-red-700 relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-red-500 before:hover:bg-red-400 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+            />
+          </svg>
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >@tudemaha</span
+          >
+        </a>
+        <a
+          target="_blank"
+          href="https://medium.com/tudemaha"
+          class="group w-12 hover:w-44 h-12 bg-black relative rounded text-white duration-700 font-bold flex justify-start gap-2 items-center p-2 before:absolute before:-z-10 before:left-8 before:hover:left-40 before:w-6 before:h-6 before:bg-red-500 before:hover:bg-red-400 before:rotate-45 before:duration-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            class="w-8 h-8 shrink-0 fill-white"
+          >
+            <path
+              d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8m4.95 0c0 2.34-1.01 4.236-2.256 4.236S9.463 10.339 9.463 8c0-2.34 1.01-4.236 2.256-4.236S13.975 5.661 13.975 8M16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795"
+            />
+          </svg>
+          <span
+            class="origin-left inline-flex duration-100 group-hover:duration-300 group-hover:delay-500 opacity-0 group-hover:opacity-100 border-l-2 px-1 transform scale-x-0 group-hover:scale-x-100 transition-all"
+            >@tudemaha</span
+          >
+        </a>
+      </div>
+    </section>
+    <!-- end of contacts -->
 
     <!-- footer -->
-    <footer>
-        <div class="container">
-            <div class="row pt-3 align-content-between">
-                <div class="col-md-6">
-                    <p class="text-center text-md-start">Created with <i class="bi bi-heart-fill text-danger"></i> by <a class="link-light" href="https://instagram.com/tudemaha">Tude Maha</a>.</p>
-                </div>
-                <div class="col-md-6">
-                    <p class="text-center text-md-end">&copy; 2022 - All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
+    <footer
+      class="py-8 px-6 bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
+    >
+      <div class="max-w-6xl mx-auto text-center">
+        <p>© 2026 Tude Maha. All rights reserved.</p>
+      </div>
     </footer>
     <!-- end of footer -->
-
-
-    <!-- Typed JS -->
-    <script>
-        var welcome = new Typed('#welcome', {
-            strings: ["Welcome!"],
-            typeSpeed: 120,
-            startDelay: 80,
-            loop: true
-        });
-    </script>
-
-
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-          delay: 100,
-          easing: 'ease-out'
-      });
-    </script>
-
-    <!-- Tilt JS -->
-    <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
-    <script type="text/javascript">
-        VanillaTilt.init(document.querySelector(".profile-frame"), {
-            max: 25,
-            speed: 400
-        });
-    </script>
-
-
-
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
