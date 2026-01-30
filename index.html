@@ -27,7 +27,7 @@
             <ul class="flex items-center gap-6 text-sm">
               <li>
                 <a
-                  class="rounded-md bg-lime-100 px-3 py-2 text-sm font-medium text-lime-700 dark:bg-lime-900/50 dark:text-lime-300"
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
                   href="#about"
                 >
                   About
@@ -36,7 +36,7 @@
 
               <li>
                 <a
-                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
                   href="#experiences"
                 >
                   Experiences
@@ -45,7 +45,16 @@
 
               <li>
                 <a
-                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="#skills"
+                >
+                  Skills
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
                   href="#projects"
                 >
                   Projects
@@ -54,15 +63,7 @@
 
               <li>
                 <a
-                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                  href="#skills"
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
                   href="#contacts"
                 >
                   Contacts
@@ -74,6 +75,7 @@
           <div class="flex items-center gap-4">
             <button
               class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+              id="navToggle"
             >
               <span class="sr-only">Toggle menu</span>
               <svg
@@ -96,6 +98,62 @@
       </div>
     </header>
     <!-- end of navbar -->
+
+    <!-- sidebar -->
+    <div
+      class="hidden right-0 z-40 h-screen w-48 flex-col justify-between border-e bg-white dark:border-gray-800 dark:bg-gray-900"
+      id="sidebar"
+    >
+      <div class="px-4 pt-20">
+        <ul class="mt-6 space-y-1">
+          <li>
+            <a
+              href="#about"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              About
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#experiences"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Experiences
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#skills"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Skills
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#projects"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Projects
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#contacts"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Contacts
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end of sidebar -->
 
     <!-- hero section -->
     <section
@@ -491,10 +549,303 @@
     </section>
     <!-- end of experiences -->
 
+    <!-- skills -->
+    <section
+      id="skills"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Skills
+      </h1>
+      <div class="flex gap-4 flex-wrap w-fit md:w-3/4 justify-center">
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Backend Development
+            </h3>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Programming Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Go
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  JavaScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  TypeScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  PHP
+                </span>
+              </div>
+            </div>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Gin
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  GORM
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Express
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  NestJS
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Laravel
+                </span>
+              </div>
+            </div>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Tools:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Node.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bun
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Frontend Development
+            </h3>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  JavaScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  TypeScript
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  HTML
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  CSS
+                </span>
+              </div>
+            </div>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Svelte
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SvelteKit
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  React
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Next.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Tailwind CSS
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bootstrap
+                </span>
+              </div>
+            </div>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Tools:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Node.js
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Bun
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Vite
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Mobile Development
+            </h3>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Languages:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  Swift
+                </span>
+              </div>
+            </div>
+            <div class="dark:text-neutral-300 text-gray-700">
+              <p class="mb-1">Frameworks/Libraries:</p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SwiftUI
+                </span>
+                <span
+                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                >
+                  SwiftData
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Databases
+            </h3>
+            <div class="flex flex-wrap gap-1">
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                MySQL
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                PostgreSQL
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                SQLite
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                MongoDB
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
+        >
+          <div class="flex flex-col gap-2 text-gray-300 text-sm">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Cloud Computing
+            </h3>
+            <div class="flex flex-wrap gap-1">
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Google Cloud Platform
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Linux
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Docker
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Terraform
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                Nginx
+              </span>
+              <span
+                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+              >
+                FrankenPHP
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of skills -->
+
     <!-- projects -->
     <section
       id="projects"
-      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
+      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 py-18"
     >
       <h1
         class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
@@ -1375,302 +1726,9 @@
     </section>
     <!-- end of projects -->
 
-    <!-- skills -->
-    <section
-      id="skills"
-      class="relative flex flex-col items-center justify-center px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 py-18"
-    >
-      <h1
-        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
-      >
-        Skills
-      </h1>
-      <div class="flex gap-4 flex-wrap w-fit md:w-3/4 justify-center">
-        <div
-          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
-        >
-          <div class="flex flex-col gap-2 text-gray-300 text-sm">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Backend Development
-            </h3>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Programming Languages:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Go
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  JavaScript
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  TypeScript
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  PHP
-                </span>
-              </div>
-            </div>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Frameworks/Libraries:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Gin
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  GORM
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Express
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  NestJS
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Laravel
-                </span>
-              </div>
-            </div>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Tools:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Node.js
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Bun
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
-        >
-          <div class="flex flex-col gap-2 text-gray-300 text-sm">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Frontend Development
-            </h3>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Languages:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  JavaScript
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  TypeScript
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  HTML
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  CSS
-                </span>
-              </div>
-            </div>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Frameworks/Libraries:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Svelte
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  SvelteKit
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  React
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Next.js
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Tailwind CSS
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Bootstrap
-                </span>
-              </div>
-            </div>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Tools:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Node.js
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Bun
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Vite
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="p-6 w-80 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
-        >
-          <div class="flex flex-col gap-2 text-gray-300 text-sm">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Mobile Development
-            </h3>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Languages:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  Swift
-                </span>
-              </div>
-            </div>
-            <div class="dark:text-neutral-300 text-gray-700">
-              <p class="mb-1">Frameworks/Libraries:</p>
-              <div class="flex flex-wrap gap-1">
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  SwiftUI
-                </span>
-                <span
-                  class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-                >
-                  SwiftData
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
-        >
-          <div class="flex flex-col gap-2 text-gray-300 text-sm">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Databases
-            </h3>
-            <div class="flex flex-wrap gap-1">
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                MySQL
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                PostgreSQL
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                SQLite
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                MongoDB
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="w-80 p-6 backdrop-blur-lg bg-gray-900/5 dark:bg-white/10 rounded-xl border border-gray-900/10 dark:border-white/20 shadow-xl"
-        >
-          <div class="flex flex-col gap-2 text-gray-300 text-sm">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Cloud Computing
-            </h3>
-            <div class="flex flex-wrap gap-1">
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                Google Cloud Platform
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                Linux
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                Docker
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                Terraform
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                Nginx
-              </span>
-              <span
-                class="px-3 py-1 text-sm font-medium rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
-              >
-                FrankenPHP
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end of skills -->
-
     <!-- contacts -->
     <section
-      id="skills"
+      id="contacts"
       class="relative flex flex-col items-center justify-center px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 py-18"
     >
       <h1
@@ -1812,5 +1870,7 @@
       </div>
     </footer>
     <!-- end of footer -->
+
+    <script src="script.js"></script>
   </body>
 </html>
