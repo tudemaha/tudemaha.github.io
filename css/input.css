@@ -56,3 +56,7 @@
     "CRSV" 1,
     "MONO" 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
