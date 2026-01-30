@@ -12,6 +12,10 @@ const navLinks = document.querySelectorAll(".nav-link");
 const sideLinks = document.querySelectorAll(".side-link");
 const sidebarToggle = document.getElementById("navToggle");
 const sidebar = document.getElementById("sidebar");
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
+const savedTheme = localStorage.getItem("theme");
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const resetNavLink = () => {
   navLinks.forEach((link) => {
@@ -41,4 +45,19 @@ sideLinks.forEach((link) => {
 sidebarToggle.addEventListener("click", () => {
   sidebar.classList.toggle("fixed");
   sidebar.classList.toggle("hidden");
+});
+
+if (savedTheme === "dark" || (!savedTheme && systemTheme)) {
+  html.classList.add("dark");
+} else {
+  html.classList.remove("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  html.classList.toggle("dark");
+  if (html.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
 });
