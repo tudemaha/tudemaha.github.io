@@ -61,3 +61,36 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
+
+const sections = document.querySelectorAll("section");
+const observerOptions = {
+  root: null,
+  rootMargin: "-20% 0px -60% 0px",
+  threshold: 0,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute("id");
+
+      resetNavLink();
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === `#${id}`) {
+          link.className = activeNavLink;
+        }
+      });
+
+      resetSideLink();
+      sideLinks.forEach((link) => {
+        if (link.getAttribute("href") === `#${id}`) {
+          link.className = activeSideLink;
+        }
+      });
+    }
+  });
+}, observerOptions);
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
