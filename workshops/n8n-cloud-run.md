@@ -433,7 +433,7 @@ Normal message:
 2. Select `Download`.
 3. It will download the .json format of your workflow.
 
-### The Final Workflow
+## The Final Workflow
 
 After following the tutorials above, you should have this workflow.
 ![The Final Workflow](./img/final-workflow.png)
