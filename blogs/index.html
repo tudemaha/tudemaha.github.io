@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tude Maha - Blogs</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <header
+      class="border-b border-gray-200 bg-white/80 dark:border-gray-800 dark:bg-gray-900/80 fixed z-50 w-full backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8"
+      >
+        <a href="/" class="group flex gap-3 items-center">
+          <img src="/img/nav-icon.png" alt="Tude Maha Logo" class="size-8" />
+          <span
+            class="text-xl font-bold text-gray-900 transition-colors group-hover:text-lime-600 dark:text-white group-hover:dark:text-lime-400"
+            >Tude Maha</span
+          >
+        </a>
+
+        <div class="flex flex-1 items-center justify-end">
+          <nav aria-label="Global" class="hidden md:block">
+            <ul class="flex items-center gap-6 text-sm">
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/#about"
+                >
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/#experiences"
+                >
+                  Experiences
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/#skills"
+                >
+                  Skills
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/#projects"
+                >
+                  Projects
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/#contacts"
+                >
+                  Contacts
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="rounded-md px-3 py-2 text-sm font-medium bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 nav-link"
+                  href="/blogs/"
+                >
+                  Blogs
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  href="/workshops/"
+                >
+                  Workshops
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="flex items-center gap-4 ps-6">
+            <button
+              id="themeToggle"
+              class="block hover:cursor-pointer rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+            >
+              <span class="sr-only">Toggle theme</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-5 hidden dark:block"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-5 block dark:hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+
+            <button
+              class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+              id="navToggle"
+            >
+              <span class="sr-only">Toggle menu</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end of navbar -->
+
+    <!-- sidebar -->
+    <div
+      class="hidden right-0 z-40 h-screen w-48 flex-col justify-between border-e bg-white dark:border-gray-800 dark:bg-gray-900"
+      id="sidebar"
+    >
+      <div class="px-4 pt-20">
+        <ul class="mt-6 space-y-1">
+          <li>
+            <a
+              href="/#about"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              About
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/#experiences"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Experiences
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/#skills"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Skills
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/#projects"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Projects
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/#contacts"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Contacts
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/blogs/"
+              class="block rounded-lg bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 px-4 py-2 text-sm font-medium side-link"
+            >
+              Blogs
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/workshops/"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+            >
+              Workshops
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end of sidebar -->
+
+    <!-- start of medium section -->
+    <section
+      id="medium"
+      class="relative flex flex-col items-center justify-start px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden py-25"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        Medium
+      </h1>
+      <p
+        class="text-base md:text-xl md:px-50 lg:px-100 text-gray-600 dark:text-gray-300 mb-8 text-center"
+      >
+        I share my development experiences on
+        <a
+          target="_blank"
+          class="recursive-medium transition-colors duration-300 bg-clip-text text-transparent bg-linear-to-r from-gray-600 to-gray-600 dark:from-gray-300 dark:to-gray-300 hover:from-lime-600 hover:to-amber-600 hover:dark:from-lime-300 hover:dark:to-amber-300"
+          href="https://medium.com/@tudemaha"
+          >Medium</a
+        >. Write them in a casual style, like I tell the stories to my friends.
+      </p>
+
+      <div
+        id="medium-blogs"
+        class="flex gap-4 w-full md:w-3/4 flex-wrap justify-center"
+      ></div>
+    </section>
+    <!-- end of medium section -->
+
+    <!-- start of wordpress section -->
+    <section
+      id="wordpress"
+      class="relative flex flex-col items-center justify-start px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden py-25"
+    >
+      <h1
+        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
+      >
+        WordPress
+      </h1>
+      <p
+        class="text-base md:text-xl md:px-50 lg:px-100 text-gray-600 dark:text-gray-300 mb-8 text-center"
+      >
+        An old story
+        <a
+          target="_blank"
+          class="recursive-medium transition-colors duration-300 bg-clip-text text-transparent bg-linear-to-r from-gray-600 to-gray-600 dark:from-gray-300 dark:to-gray-300 hover:from-lime-600 hover:to-amber-600 hover:dark:from-lime-300 hover:dark:to-amber-300"
+          href="https://tudemaha.wordpress.com"
+          >WordPress</a
+        >
+        writer. I love to share my daily stories and express them in a short
+        story style.
+      </p>
+      <div
+        id="wordpress-blogs"
+        class="flex gap-4 w-full md:w-3/4 flex-wrap justify-center"
+      ></div>
+    </section>
+    <!-- end of wordpress section -->
+
+    <script src="/js/script.js"></script>
+    <script src="/js/blog.js"></script>
+  </body>
+</html>

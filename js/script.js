@@ -19,13 +19,17 @@ const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const resetNavLink = () => {
   navLinks.forEach((link) => {
-    link.className = inactiveNavLink;
+    if (window.location.pathname.length == 1) {
+      link.className = inactiveNavLink;
+    }
   });
 };
 
 const resetSideLink = () => {
   sideLinks.forEach((link) => {
-    link.className = inactiveSideLink;
+    if (window.location.pathname.length == 1) {
+      link.className = inactiveSideLink;
+    }
   });
 };
 
@@ -42,6 +46,7 @@ sideLinks.forEach((link) => {
     link.className = activeSideLink;
   });
 });
+
 sidebarToggle.addEventListener("click", () => {
   sidebar.classList.toggle("fixed");
   sidebar.classList.toggle("hidden");
@@ -76,14 +81,14 @@ const observer = new IntersectionObserver((entries) => {
 
       resetNavLink();
       navLinks.forEach((link) => {
-        if (link.getAttribute("href") === `#${id}`) {
+        if (link.getAttribute("href") === `/#${id}`) {
           link.className = activeNavLink;
         }
       });
 
       resetSideLink();
       sideLinks.forEach((link) => {
-        if (link.getAttribute("href") === `#${id}`) {
+        if (link.getAttribute("href") === `/#${id}`) {
           link.className = activeSideLink;
         }
       });
