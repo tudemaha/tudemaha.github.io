@@ -73,7 +73,7 @@
 
               <li>
                 <a
-                  class="rounded-md px-3 py-2 text-sm font-medium bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 nav-link"
+                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
                   href="/blogs/"
                 >
                   Blogs
@@ -82,7 +82,7 @@
 
               <li>
                 <a
-                  class="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75 nav-link"
+                  class="rounded-md px-3 py-2 text-sm font-medium bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 nav-link"
                   href="/workshops/"
                 >
                   Workshops
@@ -208,7 +208,7 @@
           <li>
             <a
               href="/blogs/"
-              class="block rounded-lg bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 px-4 py-2 text-sm font-medium side-link"
+              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
             >
               Blogs
             </a>
@@ -217,7 +217,7 @@
           <li>
             <a
               href="/workshops/"
-              class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 side-link"
+              class="block rounded-lg bg-lime-100 text-lime-700 dark:bg-lime-900/50 dark:text-lime-300 px-4 py-2 text-sm font-medium side-link"
             >
               Workshops
             </a>
@@ -227,66 +227,131 @@
     </div>
     <!-- end of sidebar -->
 
-    <!-- start of medium section -->
+    <!-- start of workshop section -->
     <section
-      id="medium"
+      id="workshops"
       class="relative min-h-dvh flex flex-col items-center justify-start px-6 bg-linear-to-br from-slate-100 to-slate-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden py-25"
     >
       <h1
         class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
       >
-        Medium
+        Workshops
       </h1>
       <p
         class="text-base md:text-xl md:px-50 lg:px-100 text-gray-600 dark:text-gray-300 mb-8 text-center"
       >
-        I share my development experiences on
-        <a
-          target="_blank"
-          class="recursive-medium transition-colors duration-300 bg-clip-text text-transparent bg-linear-to-r from-gray-600 to-gray-600 dark:from-gray-300 dark:to-gray-300 hover:from-lime-600 hover:to-amber-600 hover:dark:from-lime-300 hover:dark:to-amber-300"
-          href="https://medium.com/@tudemaha"
-          >Medium</a
-        >. Write them in a casual style, like I tell the stories to my friends.
+        Practical material in the workshop sessions that I have presented.
       </p>
+      <div class="flex gap-4 w-full md:w-3/4 flex-wrap justify-center">
+        <a href="/workshops/self-host-n8n-on-gcp-with-cloud-run/">
+          <div
+            class="relative w-full md:w-100 bg-white dark:bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+          >
+            <div
+              class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+            ></div>
+            <div
+              class="relative h-full z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+            >
+              <div
+                class="flex flex-col gap-4 text-gray-500 dark:text-gray-400 text-sm hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors"
+              >
+                <div>
+                  <div class="flex flex-wrap gap-1">
+                    <span
+                      class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                      >n8n</span
+                    >
+                    <span
+                      class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                      >Google Cloud Run</span
+                    >
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors"
+                >
+                  Self-host Your n8n Solution on Google Cloud with Cloud Run
+                </h3>
+                <p>
+                  I presented this workshop at DevFest Bali 2025 organized by
+                  Google Developer Group Bali. This session covers the
+                  preparation of Google Cloud Platform (GCP), create revision on
+                  Cloud Run, to simple n8n automation workflow creation.
+                </p>
+                <div class="flex justify-between">
+                  <p
+                    class="text-md font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors"
+                  >
+                    Start Tutorial
+                  </p>
+                  <p
+                    class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-all duration-300 group-hover:-translate-x-2"
+                  >
+                    →
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
 
-      <div
-        id="medium-blogs"
-        class="flex gap-4 w-full md:w-3/4 flex-wrap justify-center"
-      ></div>
+        <a href="/workshops/self-host-n8n-on-gcp-with-cloud-run/">
+          <div
+            class="relative w-full md:w-100 bg-white dark:bg-gray-900 rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105"
+          >
+            <div
+              class="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur"
+            ></div>
+            <div
+              class="relative h-full z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 group-hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-500"
+            >
+              <div
+                class="flex flex-col gap-4 text-gray-500 dark:text-gray-400 text-sm hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors"
+              >
+                <div>
+                  <div class="flex flex-wrap gap-1">
+                    <span
+                      class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                      >AI Automation</span
+                    >
+                    <span
+                      class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                      >Google ADK</span
+                    >
+                  </div>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors"
+                >
+                  Self-host Your n8n Solution on Google Cloud with Cloud Run
+                </h3>
+                <p>
+                  Practical session at SINTAKS 2025, hosted by SIC of Udayana
+                  University. This session covers the preparation of Google
+                  Cloud Platform (GCP), create revision on Cloud Run, to simple
+                  n8n automation workflow creation.
+                </p>
+                <div class="flex justify-between">
+                  <p
+                    class="text-md font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors"
+                  >
+                    Start Tutorial
+                  </p>
+                  <p
+                    class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-all duration-300 group-hover:-translate-x-2"
+                  >
+                    →
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </section>
-    <!-- end of medium section -->
-
-    <!-- start of wordpress section -->
-    <section
-      id="wordpress"
-      class="relative flex flex-col items-center justify-start px-6 bg-linear-to-bl from-slate-200 to-slate-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden py-25"
-    >
-      <h1
-        class="text-gray-900 dark:text-white text-4xl md:text-5xl font-bold mb-4"
-      >
-        WordPress
-      </h1>
-      <p
-        class="text-base md:text-xl md:px-50 lg:px-100 text-gray-600 dark:text-gray-300 mb-8 text-center"
-      >
-        An old story
-        <a
-          target="_blank"
-          class="recursive-medium transition-colors duration-300 bg-clip-text text-transparent bg-linear-to-r from-gray-600 to-gray-600 dark:from-gray-300 dark:to-gray-300 hover:from-lime-600 hover:to-amber-600 hover:dark:from-lime-300 hover:dark:to-amber-300"
-          href="https://tudemaha.wordpress.com"
-          >WordPress</a
-        >
-        writer. I love to share my daily stories and express them in a short
-        story style.
-      </p>
-      <div
-        id="wordpress-blogs"
-        class="flex min-h-dvh gap-4 w-full md:w-3/4 flex-wrap justify-center"
-      ></div>
-    </section>
-    <!-- end of wordpress section -->
+    <!-- end of workshop section -->
 
     <script src="/js/script.js"></script>
-    <script src="/js/blog.js"></script>
   </body>
 </html>
