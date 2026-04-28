@@ -1,0 +1,481 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Self-host Your n8n Solution on Google Cloud with Cloud Run</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="self-host-n8n-on-gcp-with-cloud-run"
+                  title="Self-host Your n8n Solution on Google Cloud with Cloud Run"
+                  environment="web"
+                  feedback-link="https://linkedin.com/in/tudemaha">
+    
+      <google-codelab-step label="Getting Started" duration="0">
+        <p class="image-container"><img alt="DevFest Bali 2025" src="img/e118a9cfa91a55a0.png"></p>
+<h2 is-upgraded>Overview</h2>
+<p>This hands-on session is about deployment of n8n on Cloud Run. This session covers the preparation of Google Cloud Platform (GCP), create revision on Cloud Run, enable Google OAuth for n8n, prepare Telegram bot for automation, and create simple n8n automation workflow to track expenses.</p>
+<p>This session is separated into two sections. The first section will focus on the GCP environment. After we finished the work in GCP, we jumped into Telegram bot creation and the n8n environment to create and deploy the automation workflow.</p>
+<p>Let&#39;s make this session a safe place to learn. Don&#39;t hesitate to ask questions. If you have completed several steps, please feel free to assist other participants who might need help. <strong>Let&#39;s go together!</strong></p>
+<h2 is-upgraded>Prerequisites</h2>
+<ol type="1">
+<li>2FA Activated on Google Account</li>
+<li>Basic knowledge about GCP</li>
+<li>Trial billing account for GCP (make sure you redeem it before joining the workshop)</li>
+<li>Telegram account</li>
+<li>A ton of enthusiasm🔥</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="1st Section: Create GCP Project" duration="0">
+        <ol type="1">
+<li>Go to <code>https://console.cloud.google.com</code></li>
+<li>Sign in to the Google account you used to redeem the trial billing account.</li>
+<li>If you use GCP for the first time, check on Term of Services, then click &#34;Agree and continue&#34;.</li>
+<li>Click the project picker on the top left, then click on &#34;New project&#34;. <img alt="Project Selection" src="img/db71b38fc0ccd7e2.png"></li>
+<li>Type the project name (e.g. n8n-project), choose your trial billing account, then click the &#34;Create&#34; button. <img alt="Create a Project on GCP" src="img/131652289d05e0af.png"></li>
+<li>After the project is created, select your new created project from the project picker.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="1st Section: Deploy the n8n on Cloud Run" duration="0">
+        <p>We will use two approaches: <strong>Cloud Console</strong> and <strong>Cloud Shell</strong>. Choose one that fits you.</p>
+<h2 is-upgraded>Cloud Console</h2>
+<ol type="1">
+<li>Search <code>cloud run</code> on the search bar, then choose <code>Cloud Run</code>. <img alt="Search the Cloud Run" src="img/27737bb90731e220.png"></li>
+<li>Enable the API if you are prompted to activate the Cloud Run API.</li>
+<li>Click on <code>Deploy container</code> to start creating the n8n deployment.</li>
+<li>Enter this following information: <ul>
+<li>choose <code>Deploy one revision from an existing container image</code></li>
+<li>fill <code>n8nio/n8n</code> on the container image URL</li>
+<li>use <code>n8n-automation</code> as the service name</li>
+<li>choose <code>us-west1</code> for the region</li>
+<li>choose <code>Allow public access</code> on authentication section</li>
+<li>change billing to <code>Instance-based</code></li>
+<li>on auto scaling, set 1 to the minimum number of instances and maximum number of instances</li>
+<li>expand Containers, Volumes, Networking, Security section. Set <code>container port</code> to 5678 and <code>memory</code> to 2 GiB</li>
+</ul>
+</li>
+<li>Click <code>Create</code> to create first revision.</li>
+</ol>
+<h2 is-upgraded>Cloud Shell</h2>
+<ol type="1">
+<li>Activate Cloud Shell by clicking on the Cloud Shell icon on the top right.</li>
+<li>Authorize the access of Cloud Shell.</li>
+<li>Enable the Cloud Run API (you can skip this, it will ask if you want this enabled when deployed).<pre><code language="language-bash" class="language-bash">gcloud services enable run.googleapis.com
+</code></pre>
+</li>
+<li>Deploy the first revision of n8n<pre><code language="language-bash" class="language-bash">gcloud run deploy n8n-automation \
+     --image=n8nio/n8n \
+     --region=us-west1 \
+     --allow-unauthenticated \
+     --port=5678 \
+     --no-cpu-throttling \
+     --memory=2Gi \
+     --min-instances=1 \
+     --max-instances=1
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="1st Section: Create Revision to Update Webhook Cloud Console" duration="0">
+        <h2 is-upgraded>Cloud Console</h2>
+<ol type="1">
+<li>Copy the URL of your deployed Cloud Run</li>
+<li>Click on <code>Edit & deploy new version</code></li>
+<li>On edit containers, navigate to <code>Variables & Secrets</code></li>
+<li>Click <code>Add variable</code></li>
+<li>Use this value <ul>
+<li>Name: <code>WEBHOOK_URL</code></li>
+<li>Value: <code>the URL you copied before</code></li>
+</ul>
+</li>
+<li>Click <code>Deploy</code> to create new revision</li>
+</ol>
+<h2 is-upgraded>Cloud Shell</h2>
+<ol type="1">
+<li>Get details of the deployed Cloud Run service.<pre><code language="language-bash" class="language-bash">gcloud run services describe n8n-automation --region=us-west1
+</code></pre>
+</li>
+<li>Copy the URL by selecting the URL shown in the details.</li>
+<li>Update the webhook URL.<pre><code language="language-bash" class="language-bash">gcloud run services update n8n-automation \
+     --region=us-west1 \
+     --update-env-vars=WEBHOOK_URL=&lt;the URL you copied before&gt;
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="1st Section: Enable Google OAuth for n8n" duration="0">
+        <h2 is-upgraded>Enable Required APIs</h2>
+<ol type="1">
+<li>Navigate to APIs Service &gt; Library from the left sidebar.</li>
+<li>Enable the following services by searching it one by one. <ul>
+<li>Google Drive API</li>
+<li>Google Sheets API <img alt="Enable Drive API" src="img/d1b8f7611d481a95.png"><img alt="Enable Sheets API" src="img/815e0b5240e65c0c.png"></li>
+</ul>
+</li>
+</ol>
+<h2 is-upgraded>OAuth Screen Setup</h2>
+<ol type="1">
+<li>Navigate to APIs Service &gt; OAuth consent screen from the left sidebar.</li>
+<li>Select <code>Get started</code> on the Overview tab.</li>
+<li>On App Information <ul>
+<li>App name: n8n Automation</li>
+<li>User support email: </li>
+<li>Click <code>Next</code></li>
+</ul>
+</li>
+<li>On Audience, select External, then Next.</li>
+<li>On Contact Information, enter your email address, then Next.</li>
+<li>Read and accept Google&#39;s User Data Policy, then Continue.</li>
+<li>Navigate to the Branding tab.</li>
+<li>On Authorized domains, select &#34;Add domain&#34;</li>
+<li>Enter the deployed n8n deployed on Cloud Run before (remove the https://).</li>
+<li>Click Save to save the changes.</li>
+<li>Navigate to the Audience tab.</li>
+<li>Click <code>Publish app</code> to publish the OAuth.</li>
+</ol>
+<h2 is-upgraded>OAuth Client ID Setup</h2>
+<ol type="1">
+<li>Navigate to APIs &amp; Services &gt; Credentials.</li>
+<li>Select <code>Create credentials</code> then <code>OAuth client ID</code>.</li>
+<li>Select <code>Web application</code> on Application type.</li>
+<li>Change the name to <code>n8n Automation</code>.</li>
+<li>On Authorized redirect URIs, select <code>Add URI</code>.</li>
+<li>Add your Cloud Run deployment URL, append with <code>/rest/oauth2-credential/callback</code> (e.g. https://n8n.us-west1.run.app/rest/oauth2-credential/callback)</li>
+<li>Click <code>Create</code></li>
+<li>Download JSON or copy the <code>Client ID</code> and <code>Client Secret</code> to be used on 2nd section</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="2nd Section: Create Telegram bot Using BotFather" duration="0">
+        <ol type="1">
+<li>Log in to your Telegram account, then search <code>@BotFather</code> or use this link instead <a href="https://t.me/BotFather" target="_blank">https://t.me/BotFather</a>.</li>
+<li>Start the bot.</li>
+<li>Create a new bot using <code>/newbot</code> command.</li>
+<li>Choose a name for your new bot.</li>
+<li>Choose an username for your bot. It must end with <code>bot</code> (e.g. expense_bot or ExpenseBot). If the username is already taken, choose the other name.</li>
+<li>If your bot is created successfully, BotFather will give you the access token. It will be used for the next step.</li>
+</ol>
+<aside class="special"><p> If you forgot or deleted the token, use the `/token` command and then select the bot you want to get the token for. </p>
+</aside>
+<p class="image-container"><img alt="Create Telegram Bot" src="img/6dbc0884fad5915c.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="2nd Section: Create n8n Account on your self-deployed n8n" duration="0">
+        <ol type="1">
+<li>Access your deployed n8n.</li>
+<li>Set up an owner account (you can add random info in this form). <img alt="n8n First Setup" src="img/cd1a2c017cdab3f3.png"></li>
+<li>Select <code>I'm not using n8n for work</code> on <code>What best describes your company?</code> section.</li>
+<li>Select <code>Event</code> on <code>How did you hear about n8n?</code> section.</li>
+<li>Select <code>Get started</code>.</li>
+<li>Skip the license offer.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="2nd Section: Set up Telegram on n8n" duration="0">
+        <ol type="1">
+<li>On the left sidebar, click <code>+</code> then <code>Credentials</code>.</li>
+<li>Select <code>Telegram API</code> on the app to connect.</li>
+<li>Select <code>Continue</code>.</li>
+<li>Paste the access token obtained from BotFather.</li>
+<li>Click <code>Save</code> and wait for n8n to test the connection.</li>
+<li>Close the Credentials modal.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="2nd Section: Set up Google OAuth on n8n" duration="0">
+        <ol type="1">
+<li>On the left sidebar, click on <code>+</code> then <code>Credentials</code>.</li>
+<li>Select <code>Google Sheets OAuth2 API</code> on the app to connect.</li>
+<li>Select <code>Continue</code>.</li>
+<li>Paste the <code>Client ID</code> and <code>Client Secret</code> obtained from 1st section.</li>
+<li>Click on <code>Sign in With Google</code>.</li>
+<li>Login with your Google account.</li>
+<li>It&#39;s okay to trust the login page because it&#39;s created by yourself. <img alt="Google OAuth Warning" src="img/94a52a26ed86f0e5.png"></li>
+<li>Select all permissions, then click <code>Continue</code><img alt="Google OAuth Permission" src="img/51949e386c984f0a.png"></li>
+<li>You will get this badge if the connection is successfully created. <img alt="Google OAuth Success" src="img/4b3cd25602be96da.png"></li>
+<li>Close the Credentials modal.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="2nd Section: Create Automation to Track Expenses" duration="0">
+        <p>This section is quite long and have a little coding involved. Don&#39;t worry, I will guide you step by step.</p>
+<h2 is-upgraded>Creating Workflow</h2>
+<ol type="1">
+<li>On the left sidebar, click on <code>+</code> then <code>Workflow</code>.</li>
+<li>Change the workflow&#39;s name to <code>Telegram Expenses</code>.</li>
+</ol>
+<h2 is-upgraded>Create Telegram Trigger Node</h2>
+<ol type="1">
+<li>Create a Telegram trigger node by clicking the <code>+</code> button, then select <code>On message</code>.</li>
+<li>Make sure to use the Telegram credential you created before.</li>
+<li>Try <code>Execute step</code> then send a random message to the bot by accessing your bot.</li>
+<li>After the message is sent, you will get the output on the right side.</li>
+<li>Focus on the end of the output. <code>entities</code> field gives you additional bot command information if you send a message starting with <code>/</code>.</li>
+</ol>
+<p>Message starting with <code>/</code>:<br><img alt="Command Message" src="img/6ffe4f2d63e0ee8d.png"></p>
+<p>Normal message:<br><img alt="Normal Message" src="img/51913f8063c18304.png"></p>
+<h2 is-upgraded>Filter the Bot Command</h2>
+<ol type="1">
+<li>Click on the <code>+</code> button on the right of the Telegram trigger node, then choose the <code>If</code> node.</li>
+<li>Drag the <code>message.chat.entities.entities[0].type</code> from the left side to the <code>value1</code> column.</li>
+<li>On the condition, choose <code>String > is equal to</code>.</li>
+<li>Fill <code>value2</code> with <code>bot_command</code>.</li>
+<li>Turn on the <code>convert types where required</code>.</li>
+<li>Try to <code>Execute workflow</code>.</li>
+</ol>
+<h2 is-upgraded>Bot Reply If You Send A Non Bot Command</h2>
+<ol type="1">
+<li>On the false output, click the <code>+</code> button then add Telegram &gt; Send a text message node.</li>
+<li>Drag <code>message.chat.id</code> from the left side to the <code>Chat ID</code> column.</li>
+<li>On <code>Text</code>, fill with the rejection message, e.g. &#34;Only bot commands were accepted.&#34;</li>
+<li>Try to <code>Execute workflow</code>. The Telegram bot will reply to your non bot command with your defined message.</li>
+</ol>
+<h2 is-upgraded>Different Actions Based On Bot Commands</h2>
+<ol type="1">
+<li>On the true output, click the <code>+</code> button then add <code>Switch</code> node.</li>
+<li>Drag <code>message.chat.text</code> to <code>value1</code>.</li>
+<li>On the condition, choose <code>String > starts with</code>.</li>
+<li>Fill <code>value2</code> with <code>/note</code>.</li>
+<li>Activate <code>Rename Output</code> and rename to <code>/note</code>.</li>
+<li>Turn on the <code>convert types where required</code>.</li>
+<li>Close the node editor.</li>
+<li>Try to <code>Execute workflow</code>.</li>
+</ol>
+<h2 is-upgraded>Transform the Expenses</h2>
+<ol type="1">
+<li>On the output of /note, click the <code>+</code> button then add Code &gt; Code in JavaScript.</li>
+<li>Set the Mode to <code>Run Once for All Items</code>.</li>
+<li>We split the command and list of expenses. Next, split the expenses into items and prices. <pre><code language="language-javascript" class="language-javascript">const rawMessage = $input.first().json.message.text.trim();
+const rawExpenses = rawMessage.split(&#34;/note\n&#34;)[1];
+const expenses = rawExpenses.split(&#34;\n&#34;);
+const output = expenses.map((expense) =&gt; {
+  const e = expense.trim().split(&#34;/&#34;);
+  let price = 0;
+  if (e[1].endsWith(&#34;k&#34;)) {
+    price = Number(e[1].split(&#34;k&#34;)[0].replaceAll(&#34;,&#34;, &#34;.&#34;));
+    price *= 1000;
+  } else if (e[1].endsWith(&#34;rb&#34;)) {
+    price = Number(e[1].split(&#34;rb&#34;)[0].replaceAll(&#34;,&#34;, &#34;.&#34;));
+    price *= 1000;
+  } else {
+    price = Number(e[1]);
+  }
+  return {
+    item: e[0],
+    price: price,
+  };
+});
+return output;
+</code></pre>
+</li>
+<li>Try to <code>Execute workflow</code>.</li>
+<li>Then send this message <pre><code>/note
+ayam/10k
+sari roti/50k
+hydro coco/10000
+</code></pre>
+</li>
+<li>Notice that the output is already split into a list of expenses.</li>
+</ol>
+<h2 is-upgraded>Insert into Spreadsheet</h2>
+<ol type="1">
+<li>On the output of JavaScript code, click the <code>+</code> button then add Google Sheets &gt; Append row in sheet.</li>
+<li>Select your Google credential to connect with.</li>
+<li>Create a new Spreadsheet on your Drive.</li>
+<li>Type <code>Date</code>, <code>Month</code>, <code>Year</code>, <code>Item</code>, and <code>Price</code> as the table header.</li>
+<li>Copy the Spreadsheet URL.</li>
+<li>Back to n8n, On Document select <code>By URL</code> and paste your Spreadsheet&#39;s URL.</li>
+<li>On Sheet, select <code>From list</code>, and select your current sheet&#39;s name.</li>
+<li>On Mapping Column Mode, select <code>Map Each Column Manually</code>.</li>
+<li>On Date, switch to Expression, then type <code>&#123;&#123; $now.day }}</code></li>
+<li>On Month, switch to Expression, then type <code>&#123;&#123; $now.month }}</code></li>
+<li>On Year, switch to Expression, then type <code>&#123;&#123; $now.year }}</code></li>
+<li>Drag <code>item</code> from the left side (output of JavaScript node) into Item.</li>
+<li>Drag <code>price</code> from the left side (output of JavaScript node) into Price.</li>
+<li>Try to <code>Execute workflow</code>.</li>
+</ol>
+<h2 is-upgraded>Send Success Reply</h2>
+<ol type="1">
+<li>On the true output, click the <code>+</code> button then add Telegram &gt; Send a text message node.</li>
+<li>Expand the Telegram trigger output on the left side.</li>
+<li>Drag <code>message.chat.id</code> from the left side to the <code>Chat ID</code> column.</li>
+<li>On <code>Text</code>, fill with the rejection message, e.g. &#34;Your expenses are inserted into Sheet.&#34;</li>
+<li>Move to the <code>Settings</code> tab, turn <code>Execute Once</code> on.</li>
+<li>Try to <code>Execute workflow</code>.</li>
+<li>The Telegram bot will reply if your expenses are inserted into Sheet.</li>
+</ol>
+<h2 is-upgraded>Add New Rule to Summarize Expenses</h2>
+<ol type="1">
+<li>Double click on the switch node.</li>
+<li>Click on <code>Add Routing Rule</code>.</li>
+<li>Copy and paste the value1 from <code>/note</code> section into value1 in new section.</li>
+<li>On the condition, choose <code>String > starts with</code>.</li>
+<li>Fill value2 with <code>/summary</code>.</li>
+<li>Activate <code>Rename Output</code> and rename to <code>/summary</code>.</li>
+<li>Turn on the <code>convert types where required</code>.</li>
+<li>Close the node editor.</li>
+</ol>
+<h2 is-upgraded>Transform the Summary Command</h2>
+<ol type="1">
+<li>On the output of /summary, click the <code>+</code> button then add Code &gt; Code in JavaScript.</li>
+<li>Set the Mode to Run Once for All Items`.</li>
+<li>We split the command and the month-year summary. <pre><code language="language-javascript" class="language-javascript">const output = {
+  month: $now.month,
+  year: $now.year,
+};
+const rawMessage = $input.first().json.message.text.trim();
+const expression = rawMessage.split(&#34;/summary &#34;);
+if (expression.length == 1) {
+  return output;
+}
+const summaryExpressions = expression[1].split(&#34;-&#34;);
+switch (summaryExpressions.length) {
+  case 2:
+    output.year = summaryExpressions[1];
+  case 1:
+    output.month = summaryExpressions[0];
+    break;
+}
+return output;
+</code></pre>
+</li>
+<li>Try to <code>Execute workflow</code>.</li>
+<li>Then send this message: <code>/summary</code> or <code>/summary 12</code> or <code>/summary 12-2025</code></li>
+<li>Notice that the output is splitted into object.</li>
+</ol>
+<h2 is-upgraded>Get Data From Spreadsheet</h2>
+<ol type="1">
+<li>On the output of JavaScript code, click the <code>+</code> button then add Google Sheets &gt; Get row(s) in sheet.</li>
+<li>Select your Google credential to connect with.</li>
+<li>On Document select <code>By URL</code> and paste your Spreadsheet&#39;s URL.</li>
+<li>On Sheet, select <code>From list</code>, and select your current sheet&#39;s name.</li>
+<li>Add the first filter, select Month column then drag month output from the left side to Value.</li>
+<li>Add a second filter, select Year column then drag year output from the left side to Value.</li>
+<li>Select <code>AND</code> as the Combine Filter.</li>
+<li>Move to the <code>Settings</code> tab, turn <code>Always Output Data</code> on.</li>
+<li>Try to <code>Execute step</code>.</li>
+</ol>
+<h2 is-upgraded>No Data Condition</h2>
+<ol type="1">
+<li>On the output of the Spreadsheet, add the <code>If</code> node.</li>
+<li>On <code>value1</code>, change the mode to Expression then use <code>&#123;&#123; $json }}</code> as the value.</li>
+<li>On condition, select <code>Object > is not empty</code>.</li>
+<li>Try to <code>Execute step</code>.</li>
+</ol>
+<h2 is-upgraded>Send Empty Message</h2>
+<ol type="1">
+<li>On the false output of the If node, add Telegram &gt; Send a text message.</li>
+<li>Expand the Telegram trigger output on the left side.</li>
+<li>Drag <code>message.chat.id</code> from the left side to the <code>Chat ID</code> column.</li>
+<li>On Text, change the mode to Expression. <pre><code>No data for &#123;&#123; $(&#39;summary transformation&#39;).item.json.month }}/&#123;&#123; $(&#39;summary transformation&#39;).item.json.year }}.
+</code></pre>
+<aside class="warning"><p> Note: change `&#123;&#123; $(&#39;summary transformation&#39;).item.json.month }}` and `&#123;&#123; $(&#39;summary transformation&#39;).item.json.year }}` by drag and drop your summary transformation output from the left side to the Text field. </p>
+</aside>
+</li>
+<li>Try to <code>Execute workflow</code>.</li>
+</ol>
+<h2 is-upgraded>Create Summarization</h2>
+<ol type="1">
+<li>On the true output of the If node, add the <code>Summarize</code> node.</li>
+<li>On Aggregation, select <code>Count</code> then drag Item output from the left side to the Field column.</li>
+<li>Add field, select <code>Sum</code> on Aggregation, then drag Price from the left side to the Field column.</li>
+<li>Add field, select <code>Average</code> on Aggregation, then drag Price from the left side to the Field column.</li>
+<li>Custom the field to get the summarize as you want.</li>
+<li>Try to <code>Execute step</code>.</li>
+</ol>
+<h2 is-upgraded>Send Summarize</h2>
+<ol type="1">
+<li>On the output of the Summarize, add Telegram &gt; Send a text message.</li>
+<li>Expand the Telegram trigger output on the left side.</li>
+<li>Drag <code>message.chat.id</code> from the left side to the <code>Chat ID</code> column.</li>
+<li>On Text, change the mode to Expression. <pre><code>This is your summary for &#123;&#123; $(&#39;summary transformation&#39;).item.json.month }}/&#123;&#123; $(&#39;summary transformation&#39;).item.json.year }}:
+ - Item you buy: &#123;&#123; $json.count_Item }}
+ - Total expenses: &#123;&#123; $json.sum_Price }}
+ - Average expenses: &#123;&#123; $json.average_Price }}
+</code></pre>
+<aside class="warning"><p> Note: change `&#123;&#123; $(&#39;summary transformation&#39;).item.json.month }}` and `&#123;&#123; $(&#39;summary transformation&#39;).item.json.year }}` by drag and drop your summary transformation output from the left side to the Text field. </p>
+</aside>
+</li>
+<li>Try to <code>Execute workflow</code>.</li>
+</ol>
+<h2 is-upgraded>Test and Run the Workflow</h2>
+<ol type="1">
+<li>Close the node editor.</li>
+<li>Try to <code>Execute workflow</code>.</li>
+<li>Try to send a message to insert expenses and get summarization.</li>
+<li>To run the workflow, toggle the mode to <code>Active</code> on the top right.</li>
+</ol>
+<h2 is-upgraded>Export the Workflow</h2>
+<ol type="1">
+<li>Select triple dots on the top right.</li>
+<li>Select <code>Download</code>.</li>
+<li>It will download the .json format of your workflow.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="References" duration="0">
+        <ol type="1">
+<li><a href="https://cloud.google.com/run" target="_blank">Google Cloud Run</a></li>
+<li>n8n Documentation <ul>
+<li><a href="https://docs.n8n.io/hosting/installation/server-setups/google-cloud-run" target="_blank">Self-host in GCR</a></li>
+<li><a href="https://docs.n8n.io/courses/level-two/chapter-1" target="_blank">Data structure</a></li>
+<li><a href="https://docs.n8n.io/integrations/builtin/credentials/google/oauth-single-service" target="_blank">Google OAuth credential</a></li>
+<li><a href="https://docs.n8n.io/integrations/builtin/credentials/telegram" target="_blank">Telegram credential</a></li>
+</ul>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

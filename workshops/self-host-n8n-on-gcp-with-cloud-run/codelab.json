@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-04-28T22:56:44+08:00",
+  "id": "self-host-n8n-on-gcp-with-cloud-run",
+  "duration": 0,
+  "title": "Self-host Your n8n Solution on Google Cloud with Cloud Run",
+  "summary": "This hands-on session is about deployment of n8n on Cloud Run. This session covers the preparation of Google Cloud Platform (GCP), create revision on Cloud Run, enable Google OAuth for n8n, prepare Telegram bot for automation, and create simple n8n automation workflow to track expenses.",
+  "source": "n8n-cloud-run.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://linkedin.com/in/tudemaha",
+  "url": "self-host-n8n-on-gcp-with-cloud-run"
+}
