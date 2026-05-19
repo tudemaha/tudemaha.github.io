@@ -1,0 +1,186 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Multi-Agent with ADK for Task Planner Automation</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="adk-planner-automation"
+                  title="Multi-Agent with ADK for Task Planner Automation"
+                  environment="web"
+                  feedback-link="https://linkedin.com/in/tudemaha">
+    
+      <google-codelab-step label="Getting Started" duration="0">
+        <h2 is-upgraded>Overview</h2>
+<p>ADK is an open-source framework from Google to build AI agents. Talking about AI automation, ADK is the first choice since it provides simpler way to learn and build it.</p>
+<p>On this session, we will create an AI automation to plan college tasks completion based on their complexity. This session covers Google Cloud Platform (GCP) preparation, enabling necessary APIs, connect to MCP server, and build the AI automation. Multi-agent approach will be used to build the AI automation.</p>
+<p>Don&#39;t worry about your computer specification, most of our step will be done in GCP using the Cloud Shell Editor.</p>
+<p>Let&#39;s make this session a safe place to learn. Don&#39;t hesitate to ask questions. If you have completed several steps, please feel free to assist other participants who might need help. <strong>Let&#39;s go together!</strong></p>
+<h2 is-upgraded>Prerequisites</h2>
+<ol type="1">
+<li>Internet connection</li>
+<li>2FA Activated on Google Account</li>
+<li>Basic knowledge about GCP</li>
+<li>Stay calm and enthusiastic!🔥</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create GCP Project" duration="0">
+        <ol type="1">
+<li>Go to <code>https://console.cloud.google.com</code></li>
+<li>Sign in to the Google account you will use for this workshop.</li>
+<li>If you use GCP for the first time, check on Term of Services, then click &#34;Agree and continue&#34;.</li>
+<li>Click the project picker on the top left, then click on &#34;New project&#34;. <br><img alt="Project Selection" style="width: 400.00px" src="img/db71b38fc0ccd7e2.png"></li>
+<li>Type the project name (e.g. adk-automation) then click the &#34;Create&#34; button. <br><img alt="Create a Project on GCP" style="width: 600.00px" src="img/c5623ad3b3ca51a6.jpg"></li>
+<li>After the project is created, select your new created project from the project picker.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Enable Required APIs" duration="0">
+        <p>Choose one option to enable the APIs: either Cloud Console or Cloud Shell.</p>
+<h2 is-upgraded>Cloud Console</h2>
+<ol type="1">
+<li>Navigate to APIs &amp; Services &gt; Library from the left sidebar.</li>
+<li>Searce for &#34;Google Calendar API&#34; then click the result to open the API page.</li>
+<li>Click &#34;Enable&#34; to enable the API. <br><img alt="Google Calendar API" style="width: 400.00px" src="img/165c36b778126743.jpg"></li>
+</ol>
+<h2 is-upgraded>Cloud Shell</h2>
+<ol type="1">
+<li>Open the Cloud Shell by clicking the &#34;Activate Cloud Shell&#34; button on the top right of the GCP Console. <img alt="Cloud Shell Icon" style="width: 30.00px" src="img/986fc129af41b347.jpg"></li>
+<li>Authorize the access of Cloud Shell.</li>
+<li>Click the project picker on the top left, then copy your project ID.</li>
+<li>Execute this command to enable the Google Calendar API. <pre><code language="language-bash" class="language-bash">gcloud services enable calendar-json.googleapis.com --project=PROJECT_ID
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create OAuth Consent Screen and Client" duration="0">
+        <h2 is-upgraded>OAuth Consent Screen</h2>
+<ol type="1">
+<li>Navigate to APIs &amp; Services &gt; OAuth consent screen from the left sidebar.</li>
+<li>Select &#34;Get Started&#34; on the Overview tab.</li>
+<li>On App Information <ul>
+<li>App name: ADK Automation</li>
+<li>User support email: <code>choose your email</code></li>
+<li>Click Next</li>
+</ul>
+</li>
+<li>On Audience, select <code>External</code>, then click Next.</li>
+<li>On Contact Information, enter your email address, then Next.</li>
+<li>Read and accept Google&#39;s User Data Policy, then Create.</li>
+<li>Navigate to Audience tab.</li>
+<li>Click &#34;Publish app&#34; to publish your consent screen.</li>
+</ol>
+<h2 is-upgraded>OAuth Client ID</h2>
+<ol type="1">
+<li>Navigate to Clients tab.</li>
+<li>Click on &#34;+ Create Client&#34; button.</li>
+<li>On Application type, select <strong>Desktop app</strong>.</li>
+<li>On the Name field, enter &#34;ADK Automation&#34;.</li>
+<li>Click &#34;Create&#34;.</li>
+<li>Download the JSON file containing your Client ID and Client Secret.</li>
+<li>Change the file name to <code>client_secret.json</code>.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Generate Gemini API Key" duration="0">
+        <ol type="1">
+<li>Open <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a> in a new tab.</li>
+<li>Go to &#34;Get API Key&#34;.</li>
+<li>On the top right, click &#34;Create API Key&#34;.</li>
+<li>Fill the form: <ul>
+<li>Name: ADK Automation</li>
+<li>Imported Project: <ol type="1">
+<li>select &#34;Import Project&#34;</li>
+<li>select the GCP project you created earlier</li>
+<li>click &#34;Import&#34;</li>
+<li>choose <code>adk-automation</code> from the list</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Click &#34;Create key&#34;.</li>
+<li>Copy the API key and store it securely.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prepare Your Environment" duration="0">
+        <h2 is-upgraded>Step 1: Code Editor</h2>
+<ol type="1">
+<li>Open the Cloud Shell by clicking the &#34;Activate Cloud Shell&#34; (<img alt="Cloud Shell Icon" style="width: 30.00px" src="img/986fc129af41b347.jpg">) if it closed.</li>
+<li>On the top right corner of the Cloud Shell, click &#34;Open in new window&#34; (<img alt="Open Editor" style="width: 25.00px" src="img/62f0768eeca12460.jpg">).</li>
+<li>Show the text editor by clicking on the &#34;Open Editor&#34; (<img alt="Open Editor" style="width: 25.00px" src="img/901324aa05e36798.jpg">) on the top right corner.</li>
+<li>Create a new folder for our project by running the following command: <pre><code language="language-bash" class="language-bash">mkdir adk-automation
+cd adk-automation
+</code></pre>
+</li>
+<li>On the editor, click &#34;Open Folder&#34;, then select the folder you created in the previous step.</li>
+</ol>
+<h2 is-upgraded>Step 2: Python Virtual Environment</h2>
+<ol type="1">
+<li>Create and activate Python virtual environment. <pre><code language="language-bash" class="language-bash">python -m venv env
+source env/bin/activate
+</code></pre>
+</li>
+<li>Install required Python packages. <pre><code language="language-bash" class="language-bash">pip install google-adk python-dotenv
+</code></pre>
+</li>
+</ol>
+<h2 is-upgraded>Step 3: MCP Server</h2>
+<ol type="1">
+<li>Upload the <code>client_secret.json</code> file to the <code>adk-automation</code> folder by dragging and dropping the file to the editor.</li>
+<li>Authenticate the Google Calendar MCP Server. <pre><code language="language-bash" class="language-bash">export GOOGLE_OAUTH_CREDENTIALS=&#34;client_secret.json&#34;
+npx @cocal/google-calendar-mcp auth
+# If prompted, type &#34;yes&#34; to continue
+</code></pre>
+</li>
+<li>Open the authentication URL in your browser, sign in to your Google account, and grant the necessary permissions.</li>
+<li>Open a new Cloud Shell session, copy the URL redirection after finishing step 10. It should be like <code>http://localhost:3500/oauth2callback?state=6787cc77143176e0a1760...</code><pre><code language="language-bash" class="language-bash">curl -X GET &#34;&lt;paste the copied URL&gt;&#34;
+</code></pre>
+</li>
+</ol>
+<aside class="special"><p> If you need to show the hidden file on the editor, navigate to View &gt; Toggle Hidden Files </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-05-19T14:54:54+08:00",
+  "id": "adk-planner-automation",
+  "duration": 0,
+  "title": "Multi-Agent with ADK for Task Planner Automation",
+  "summary": "An hands-on session to build your own AI automation powered by Google Agent Development Kit (ADK) with LLM from the free-tier of Google AI Studio. This session covers the Google Cloud Platform (GCP) preparation, enabling necessary APIs, connect to MCP server, and build the AI automation.",
+  "source": "adk-planner-automation.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://linkedin.com/in/tudemaha",
+  "url": "adk-planner-automation"
+}
