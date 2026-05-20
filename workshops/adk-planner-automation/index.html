@@ -163,13 +163,407 @@ npx @cocal/google-calendar-mcp auth
 # If prompted, type &#34;yes&#34; to continue
 </code></pre>
 </li>
-<li>Open the authentication URL in your browser, sign in to your Google account, and grant the necessary permissions.</li>
+<li>Open the authentication URL in your browser, sign in to your Google account, and grant the necessary permissions (It&#39;s okay if the page said your application is not verified, just continue).</li>
 <li>Open a new Cloud Shell session, copy the URL redirection after finishing step 10. It should be like <code>http://localhost:3500/oauth2callback?state=6787cc77143176e0a1760...</code><pre><code language="language-bash" class="language-bash">curl -X GET &#34;&lt;paste the copied URL&gt;&#34;
 </code></pre>
 </li>
 </ol>
 <aside class="special"><p> If you need to show the hidden file on the editor, navigate to View &gt; Toggle Hidden Files </p>
 </aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Initialize ADK Project" duration="0">
+        <ol type="1">
+<li>Run this following command on the terminal or Cloud Shell<pre><code language="language-bash" class="language-bash">adk create planner_agent
+</code></pre>
+</li>
+<li>When prompted to choose the root agent, select <strong>1</strong> for <code>gemini-2.5-flash</code>.</li>
+<li>For the backend, choose <strong>1</strong> for <code>Google AI</code>.</li>
+<li>Paste your Gemini API key when prompted.</li>
+<li>A dictionary named <code>planner_agent</code> will be created automatically.</li>
+<li>Navigate to that dictionary on the editor, then open the <code>.env</code> file.</li>
+<li>Add <code>GOOGLE_OAUTH_CREDENTIALS</code> variable with the path to your <code>client_secret.json</code> file. It should look like this:<pre><code>GOOGLE_OAUTH_CREDENTIALS=client_secret.json
+</code></pre>
+</li>
+</ol>
+<p>This is the example step-by-step for ADK initialization. <br><img alt="Initialize ADK Project" style="width: 600.00px" src="img/867d17d006579e.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create Tools for Agent" duration="0">
+        <p>On this step and the next step, we will focus on <code>agent.py</code> file inside the <code>planner_agent</code> folder. Open the file on your editor.</p>
+<h2 is-upgraded>Step 1: Import Required Libraries, .env Loader, and Define Constants</h2>
+<ol type="1">
+<li>Add the following line at the top of the file (above the <code>root_agent</code> definition) to import required libraries <pre><code language="language-python" class="language-python">import logging
+import os
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from google.adk.agents.llm_agent import Agent
+from google.adk.agents import LoopAgent, SequentialAgent
+from google.adk.models import Gemini
+from google.adk.tools.tool_context import ToolContext
+from google.adk.tools.mcp_tool import McpToolset
+from mcp import StdioServerParameters
+from google.adk.tools import exit_loop
+from google.genai import types
+from dotenv import load_dotenv
+</code></pre>
+</li>
+<li>Load .env <pre><code language="language-python" class="language-python">load_dotenv()
+</code></pre>
+</li>
+<li>Define constants for the model types we will use <pre><code language="language-python" class="language-python">GEMMA_MODEL=Gemini(model=&#39;gemma-4-31b-it&#39;)
+GEMINI_MODEL=&#39;gemini-2.5-flash&#39;
+</code></pre>
+We will use <code>GEMMA_MODEL</code> for development and <code>GEMINI_MODEL</code> for staging. We also can use <code>GEMMA_MODEL</code> for less complex tasks and <code>GEMINI_MODEL</code> for more complex tasks.</li>
+</ol>
+<h2 is-upgraded>Step 2: State Management Tool</h2>
+<p>This tool will be used by agent to store and retrieve conversation states. This tool act like the &#34;memory&#34; for the agent. Append <code>append_to_state</code> function to the <code>agent.py</code> file.</p>
+<pre><code language="language-python" class="language-python">def append_to_state(tool_context: ToolContext, field: str, response: str) -&gt; dict[str, str]:
+    &#34;&#34;&#34;
+    Append new output to an existing state key.
+
+    Args:
+        field (str): a field name to append to
+        response (str): a string to append to the field
+
+    Returns:
+        dict[str, str]: {&#34;status&#34;: &#34;success&#34;}
+    &#34;&#34;&#34;
+
+    existing_state = tool_context.state.get(field, [])
+    tool_context.state[field] = existing_state + [response]
+
+    logging.info(f&#34;[Added to {field}]: {response}&#34;)
+    return {&#34;status&#34;: &#34;success&#34;}
+</code></pre>
+<h2 is-upgraded>Step 3: Current Time Tool</h2>
+<p>This tool used by agent to retrieve current date time, since the agent doesn&#39;t know about current date time by itself.</p>
+<pre><code language="language-python" class="language-python">def get_current_time() -&gt; dict[str, int|str]:
+    &#34;&#34;&#34;
+    Retrieve the current time and date information.
+
+    Returns:
+        dict: A dictionary containing the following keys:
+            - day (str): The current day of the week (e.g., &#39;Monday&#39;).
+            - month (int): The current month as a number (1-12).
+            - date (int): The current day of the month (1-31).
+            - year (int): The current four-digit year (e.g., 2026).
+            - hour (int): The current hour in 24-hour format (0-23).
+            - minute (int): The current minute (0-59).
+            - timezone (str): The timezone key&#39;.
+    &#34;&#34;&#34;
+
+    timezone = ZoneInfo(&#34;Asia/Makassar&#34;)
+    now = datetime.now(timezone)
+    return {
+        &#34;day&#34;: now.strftime(&#34;%A&#34;),
+        &#34;month&#34;: now.month,
+        &#34;date&#34;: now.day,
+        &#34;year&#34;: now.year,
+        &#34;hour&#34;: now.hour,
+        &#34;minute&#34;: now.minute,
+        &#34;timezone&#34;: timezone.key
+    }
+</code></pre>
+<h2 is-upgraded>Step 4: Subject Code Tool</h2>
+<p>This tool used by agent to find out the subject code of the college subjects.</p>
+<aside class="special"><p> Feel free to customize the list of subjects based on your preferences. </p>
+</aside>
+<pre><code language="language-python" class="language-python">def subject_code() -&gt; list[dict]:
+    &#34;&#34;&#34;
+    Retrieve the list of available subject codes offered in the college.
+
+    Returns:
+        list[dict]: A list of dictionaries, each representing a subject with the following keys:
+            - code (str): The subject code (e.g., &#39;24SIFH16X005&#39;).
+            - name (str): The subject name in Indonesian (e.g., &#39;Statistika Dasar&#39;).
+    &#34;&#34;&#34;
+
+    return [
+        {&#34;code&#34;: &#34;24SIFH16X005&#34;, &#34;name&#34;:&#34;Statistika Dasar&#34;},
+        {&#34;code&#34;: &#34;24SIFH16Y008&#34;, &#34;name&#34;:&#34;Struktur Data&#34;},
+        {&#34;code&#34;: &#34;24SIFH16Y009&#34;, &#34;name&#34;:&#34;Sistem Operasi&#34;},
+        {&#34;code&#34;: &#34;24SIFH16X015&#34;, &#34;name&#34;:&#34;Basis Data&#34;},
+        {&#34;code&#34;: &#34;24SIFH16Y022&#34;, &#34;name&#34;:&#34;Analisis dan Desain Sistem&#34;}
+    ]
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Define Schedule Retrieval Agent" duration="0">
+        <p>On the top of <code>root_agent</code> define the <code>schedule_checker_agent</code>. This sub-agent will be used by the <code>root_agent</code> to retrieve schedules from user&#39;s Google Calendar.</p>
+<h2 is-upgraded>Step 1: Define the Sub-Agent</h2>
+<pre><code language="language-python" class="language-python">schedule_checker_agent = Agent(
+    model=GEMMA_MODEL,
+    name=&#39;schedule_checker_agent&#39;,
+    description=&#34;Check user&#39;s schedule in Google Calendar.&#34;,
+    instruction=&#34;&#34;&#34;
+    Retrieve user&#39;s schedule based on user&#39;s request.
+    - Use the MCP tool to get the list of schedule.
+    - Use &#39;get_current_time&#39; if you need to know the current date and time.
+
+    Show it to user in format:
+    - &lt;day of week&gt;, &lt;date&gt; &lt;month&gt; &lt;year&gt;
+        - &lt;start time&gt; - &lt;end time&gt;:&lt;space&gt;&lt;task title&gt;
+        - &lt;start time&gt; - &lt;end time&gt;:&lt;space&gt;&lt;task title&gt;
+        - ...
+    &#34;&#34;&#34;,
+    tools=[
+        get_current_time,
+        McpToolset(connection_params=StdioServerParameters(
+            command=&#39;npx&#39;,
+            args=[&#39;@cocal/google-calendar-mcp&#39;],
+            env={
+                &#34;GOOGLE_OAUTH_CREDENTIALS&#34;: os.getenv(&#34;GOOGLE_OAUTH_CREDENTIALS&#34;)
+            }
+        ))
+    ],
+    generate_content_config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(
+            include_thoughts=False  # exclude thoughts from output
+        )
+    )
+)
+</code></pre>
+<aside class="special"><p> We exclude the thoughts from the model to simplify the output and make it to the point. </p>
+</aside>
+<h2 is-upgraded>Step 2: Update the <code>root_agent</code></h2>
+<p>Update <code>root_agent</code>&#39;s description and instruction. Also, include <code>schedule_checker_agent</code> as the sub-agent of <code>root_agent</code>.</p>
+<pre><code language="language-python" class="language-python">root_agent = Agent(
+    model=GEMMA_MODEL,
+    name=&#39;root_agent&#39;,
+    description=&#39;Guide the user to plan a schedule for their task completion.&#39;,
+    instruction=&#34;&#34;&#34;
+    You are the personal assistant who help the user plan a schedule for their task completion.
+    If the user ask about their schedule on specific date, transfer to &#39;schedule_checker_agent&#39; to give the answer.
+    Do not assist user with anything else beside planning a schedule and greeting, politely refuse any other requests.
+    &#34;&#34;&#34;,
+    sub_agents=[schedule_checker_agent]
+)
+</code></pre>
+<h2 is-upgraded>Step 3: Try to Run the Agent</h2>
+<ol type="1">
+<li>Run this command on terminal or Cloud Shell. <pre><code language="language-bash" class="language-bash">adk web --port 8080 --host 0.0.0.0 --allow-origins &#34;*&#34;
+</code></pre>
+</li>
+<li>On the URL given, press <code>Ctrl + Click</code> or <code>Cmd + Click</code> to open the ADK web interface.</li>
+<li>Click on &#34;Select an app&#34; on the top bar, then select <code>planner_agent</code>.</li>
+<li>Try to greet the agent and ask about the schedule for today.</li>
+</ol>
+<p>If the code and configuration are correct, the web interface will show the agent&#39;s response, like the example below. <img alt="First Try ADK" src="img/8e09198a1385f24f.jpg"></p>
+<aside class="warning"><p> By default, `gemma` model shows the thinking process along with the response. Sometimes, it still show the thinking even if we already disable it. </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Define Planner Team Agent" duration="0">
+        <p>Now, let&#39;s define the <code>planner_team</code> which will be the core of the automation. This agent will be responsible for planning the schedule for the user&#39;s tasks.</p>
+<p><code>planner_team</code> is a <code>SequentialAgent</code> and consists of 2 sub-agents:</p>
+<ol type="1">
+<li><code>schedule_manager_team</code>, a <code>LoopAgent</code> which is refine the schedule to finish certain task and arrange them with a minimal conflict.</li>
+<li><code>schedule_creator_agent</code>, an <code>Agent</code> to create the schedule into the Google Calendar.</li>
+</ol>
+<h2 is-upgraded>Step 1: Define the Complexity Analyzer Agent</h2>
+<p>This agent analyze the task given by user by the rules defined in the instruction. Add this agent above the <code>schedule_checker_agent</code> created previously. This agent write and read the state from the conversation state (e.g. <code>TASK</code> and <code>DEADLINE</code>).</p>
+<p>We use <code>GEMINI_MODEL</code> here because it is better at analyzing the task and making decisions based on the rules.</p>
+<pre><code language="language-python" class="language-python">complexity_analysis_agent = Agent(
+    model=GEMINI_MODEL,
+    name=&#39;complexity_analysis_agent&#39;,
+    description=&#34;Ananyze the complexity of the user&#39;s tasks.&#34;,
+    instruction=&#34;&#34;&#34;
+    TASK:
+    { TASK? }
+
+    DEADLINE:
+    { DEADLINE? }
+
+    CONFLICT_DATES:
+    { CONFLICT_DATES? }
+
+    INSTRUCTIONS:
+    There is a TASK with deadline DEADLINE.
+    Your goal is to determine the complexity of the task and decide how many days the user needs to finish the tasks.
+
+    These are the key considerations to determine the complexity of the task:
+    - Avoid creating a schedule on the CONFLICT_DATES if possible.
+    - Do not create the schedule on the deadline.
+    - If the task is quite simple (e.g. answering questions, providing short answers, or simple programming), then the user needs 1 day to finish the task.
+    - If the task is quite complex (e.g. write an essay, make an analysis, or complex programming), then the user needs 2 days to finish the task.
+    - Special case, if the task is complex and the deadline is more than 2 weeks, then the user needs 3 days to finish the task.
+        Make sure not to make schedules that are too close together.
+
+    Use &#39;get_current_time&#39; tool to get the current date and time.
+    Generate a list of dates the user needs to do the task to finish it, don&#39;t make the duration 1 day for each schedule because user need to do other tasks.
+    Use this format: {date: &lt;date to do the task&gt;, time: &lt;start time&gt;, duration: &lt;duration in hours&gt;}
+    Return only a list of strings, without any additional text.
+    &#34;&#34;&#34;,
+    output_key=&#34;schedule_dates&#34;,
+    tools=[get_current_time]
+)
+</code></pre>
+<h2 is-upgraded>Step 2: Define the Schedule Reviewer Agent</h2>
+<p>This agent reviews the schedule generated by <code>complexity_analysis_agent</code> and make sure it doesn&#39;t conflict with the user&#39;s existing schedule. Append this agent below the <code>complexity_analysis_agent</code>.</p>
+<pre><code language="language-python" class="language-python">schedule_reviewer_agent = Agent(
+    model=GEMMA_MODEL,
+    name=&#39;schedule_reviewer_agent&#39;,
+    description=&#34;Review the user&#39;s schedule and provide feedback.&#34;,
+    instruction=&#34;&#34;&#34;
+    SCHEDULE_DATES:
+    { schedule_dates? }
+
+    INSTRUCTIONS:
+    Given a list of schedule dates for a task: SCHEDULE_DATES. Review it on Google Calendar using the MCP tools.
+    - If the selected dates on the schedule given already booked by other tasks in user&#39;s Google Calendar:
+        - Use the &#39;append_to_state&#39; tool to append that list of tasks to &#39;conflict_dates&#39; state key.
+        - There can only be 2 schedule/task a day.
+    - If there&#39;s no conflict, exit the loop using &#39;exit_loop&#39; tool.
+    &#34;&#34;&#34;,
+    tools=[
+        append_to_state,
+        exit_loop,
+        McpToolset(connection_params=StdioServerParameters(
+            command=&#39;npx&#39;,
+            args=[&#39;@cocal/google-calendar-mcp&#39;],
+            env={
+                &#34;GOOGLE_OAUTH_CREDENTIALS&#34;: os.getenv(&#34;GOOGLE_OAUTH_CREDENTIALS&#34;)
+            }
+        ))
+    ]
+)
+</code></pre>
+<h2 is-upgraded>Step 3: Define the Schedule Creator Agent</h2>
+<p>This agent simply create a schedule on the user&#39;s Google Calendar based on the schedule dates generated by the <code>schedule_manager_team</code>. Append this agent below the <code>schedule_reviewer_agent</code>.</p>
+<pre><code language="language-python" class="language-python">schedule_creator_agent = Agent(
+    model=GEMMA_MODEL,
+    name=&#39;schedule_creator_agent&#39;,
+    description=&#34;Create a schedule for the user&#39;s task completion.&#34;,
+    instruction=&#34;&#34;&#34;
+    SCHEDULE_DATES:
+    { schedule_dates? }
+
+    DEADLINE:
+    { DEADLINE? }
+
+    TASK:
+    { TASK? }
+
+    SUBJECT:
+    { SUBJECT? }
+
+    INSTRUCTIONS:
+    - Create a schedule on the user&#39;s Google Calendar using the MCP tools based on the SCHEDULE_DATES.
+        - To fill the &lt;subject code&gt; in the title, use &#39;subject_code&#39; tool to get the list of subject codes based on the SUBJECT.
+        - Format the title for the task as follow: &#39;[&lt;subject code&gt;] &lt;Short Description of the task&gt;&#39;
+        - Use TASK and DEADLINE to generate the event desription on Google Calendar.
+        - Use the MCP tools to set the same color when creating the schedule from the SCHEDULE_DATES and the DEADLINE.
+    - Create the deadline on the Google Calendar too, use the title: &#39;[&lt;subject code&gt;] DEADLINE&#39;
+    &#34;&#34;&#34;,
+    tools=[
+        get_current_time,
+        subject_code,
+        McpToolset(connection_params=StdioServerParameters(
+            command=&#39;npx&#39;,
+            args=[&#39;@cocal/google-calendar-mcp&#39;],
+            env={
+                &#34;GOOGLE_OAUTH_CREDENTIALS&#34;: os.getenv(&#34;GOOGLE_OAUTH_CREDENTIALS&#34;)
+            }
+        ))
+    ]
+)
+</code></pre>
+<h2 is-upgraded>Step 4: Tidy Up the Agent Team</h2>
+<p>Create a <code>LoopAgent</code> which is consists of <code>complexity_analysis_agent</code>, <code>schedule_reviewer_agent</code>. Give it a name <code>schedule_manager_team</code>.</p>
+<p>Finally, create a <code>SequentialAgent</code> which consists of <code>schedule_manager_team</code> and <code>schedule_creator_agent</code>. Give it a name <code>planner_team</code>.</p>
+<pre><code language="language-python" class="language-python">schedule_manager_team = LoopAgent(
+    name=&#34;schedule_manager_team&#34;,
+    description=&#34;Analyze and check user&#39;s schedule to improve the schedule to complete a task.&#34;,
+    sub_agents=[
+        complexity_analysis_agent,
+        schedule_reviewer_agent,
+    ],
+    max_iterations=3,
+)
+
+planner_team = SequentialAgent(
+    name=&#34;planner_team&#34;,
+    description=&#34;Team of agents who work together to create best fit schedule for the user&#39;s task completion.&#34;,
+    sub_agents=[
+        schedule_manager_team,
+        schedule_creator_agent
+    ]
+)
+</code></pre>
+<h2 is-upgraded>Step 5: Update the <code>root_agent</code></h2>
+<p>Update <code>root_agent</code>&#39;s description and instruction to include the new agent team.</p>
+<pre><code language="language-python" class="language-python">root_agent = Agent(
+    model=GEMMA_MODEL,
+    name=&#39;root_agent&#39;,
+    description=&#39;Guide the user to plan a schedule for their task completion.&#39;,
+    instruction=&#34;&#34;&#34;
+    You are the personal assistant who help the user plan a schedule for their task completion.
+    Ask the user what the task is and when the deadline is. Ask user to explain the task if necessary.
+    - Use the &#39;append_to_state&#39; tool to record the user&#39;s task, subject, and deadline, store it in &#39;TASK&#39;, &#39;SUBJECT&#39;, and &#39;DEADLINE&#39; state key.
+    - Then, transfer to the &#39;planner_team&#39; to determine how many days the user needs to finish the task.
+    - If the user ask about their schedule on specific date, transfer to &#39;schedule_checker_agent&#39; to give the answer.
+    Do not assist user with anything else beside planning a schedule and greeting, politely refuse any other requests.
+    &#34;&#34;&#34;,
+    tools=[append_to_state],
+    sub_agents=[planner_team, schedule_checker_agent]
+)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Test The Multi-Agent System" duration="0">
+        <ol type="1">
+<li>Restart your ADK by stopping the previous session by pressing <code>Ctrl + C</code>, then run the command below.<pre><code language="language-bash" class="language-bash">adk web --port 8080 --host 0.0.0.0 --allow-origins &#34;*&#34;
+</code></pre>
+</li>
+<li>On the URL given, press <code>Ctrl + Click</code> or <code>Cmd + Click</code> to open the ADK web interface.</li>
+<li>Click on &#34;Select an app&#34; on the top bar, then select <code>planner_agent</code>.</li>
+<li>Try to schedule your task.<pre><code language="language-txt" class="language-txt">i need to submit my assignment for analysis and system design subject on 29 may 2026. I need to create the UML diagram for my library management information system. pleasee🥹
+</code></pre>
+<pre><code language="language-txt" class="language-txt">tanggal 10 juni nanti aku harus kumpul tugas makalah basis data. isinya tuh ERD retail yang udah dibangun beserta penjelasannya. aku harus buat dalam 5 bab. tolong jadwalin buat aku yaa
+</code></pre>
+</li>
+<li>Try with your own task, let the agent helps you!</li>
+</ol>
+<p>The agent also able to read the file given! <img alt="ADK with File" src="img/4c15fbb89061b78c.jpg"></p>
+<p>Here is the expected output: <img alt="ADK Scheduled" src="img/284fb311ae868b5c.jpg"></p>
+<aside class="special"><p> Don&#39;t be panic if there&#39;s an error message. Below is the troubleshooting if you encounter it. </p>
+</aside>
+<h2 is-upgraded>Troubleshooting</h2>
+<h3 is-upgraded>500 Error</h3>
+<p class="image-container"><img alt="ADK 500 Error" style="width: 600.00px" src="img/8e40e8e57b94fe22.jpg"></p>
+<p>Try to send the prompt again, tell the agent to continue, or refresh the page and try again.</p>
+<h3 is-upgraded>High Demand Error</h3>
+<p class="image-container"><img alt="ADK 500 Error" style="width: 600.00px" src="img/26ad40686e1b451.jpg"></p>
+<p>Try to change the model, check the available model at Google AI Studio.</p>
+<h3 is-upgraded>Agent Not Found in Tree</h3>
+<p class="image-container"><img alt="ADK Agent Not Found" style="width: 600.00px" src="img/f6aa65f13ec8bbfe.jpg"></p>
+<p>Make sure to add sub-agents to the <code>sub_agents</code> argument.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="References" duration="0">
+        <ol type="1">
+<li><a href="https://adk.dev" target="_blank">Google ADK</a></li>
+<li><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></li>
+<li><a href="https://github.com/nspady/google-calendar-mcp" target="_blank">Open Source Google Calendar MCP</a></li>
+<li>Google Skills Courses <ul>
+<li><a href="https://www.skills.google/course_templates/1445" target="_blank">Deploy Multi-Agent Architectures</a></li>
+<li><a href="https://www.skills.google/course_templates/1275" target="_blank">Deploy Multi-Agent Systems with Agent Development Kit (ADK) and Agent Engine</a></li>
+</ul>
+</li>
+</ol>
 
 
       </google-codelab-step>
