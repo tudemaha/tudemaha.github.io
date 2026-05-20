@@ -27,6 +27,10 @@ Let’s make this session a safe place to learn. Don’t hesitate to ask questio
 3. Basic knowledge about GCP
 4. Stay calm and enthusiastic!🔥
 
+### Agent Overview
+
+![Project Overview](./img/adk-overview.png)
+
 ## Create GCP Project
 
 1. Go to `https://console.cloud.google.com`
