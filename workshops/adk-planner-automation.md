@@ -131,7 +131,7 @@ Choose one option to enable the APIs: either Cloud Console or Cloud Shell.
    ```
 2. Install required Python packages.
    ```bash
-   pip install google-adk python-dotenv
+   pip install google-adk==1.33.0 python-dotenv
    ```
 
 ### Step 3: MCP Server
