@@ -361,7 +361,7 @@ root_agent = Agent(
 
 1. Run this command on terminal or Cloud Shell.
    ```bash
-   adk web --port 8080 --host 0.0.0.0 --allow+origins "*"
+   adk web --port 8080 --host 0.0.0.0 --allow_origins "*"
    ```
 2. On the URL given, press `Ctrl + Click` or `Cmd + Click` to open the ADK web interface.
 3. Click on "Select an app" on the top bar, then select `planner_agent`.
@@ -557,7 +557,7 @@ root_agent = Agent(
 
 1. Restart your ADK by stopping the previous session by pressing `Ctrl + C`, then run the command below.
    ```bash
-   adk web --port 8080 --host 0.0.0.0 --allow+origins "*"
+   adk web --port 8080 --host 0.0.0.0 --allow_origins "*"
    ```
 2. On the URL given, press `Ctrl + Click` or `Cmd + Click` to open the ADK web interface.
 3. Click on "Select an app" on the top bar, then select `planner_agent`.
