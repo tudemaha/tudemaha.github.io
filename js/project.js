@@ -1,147 +1,181 @@
 const projects = [
   {
+    title: "Hide YT Studio Component",
+    image: "/img/projects/yt-toggle.webp",
+    alt: "Hide YT Studio Component",
+    description:
+      "Chrome extension to toggle hide/show YouTube Studio components. Make creators focus on their contents instead of monetization and subscribers.",
+    scope: "Chrome Extension",
+    techs: ["Chrome API", "HTML", "CSS", "JavaScript"],
+    links: [
+      {
+        name: "GitHub",
+        url: "https://github.com/tudemaha/yt-studio-toggle",
+      },
+    ],
+  },
+  {
     title: "Personal Home Server",
     image: "/img/projects/home-server.webp",
     alt: "Personal Home Server",
-    description: "I build my personal home server to host my projects. It run on an Orange Pi 3 LTS with ARM based platform. This home server utilise Cloudflare Tunnel so it can be accessed through internet.",
+    description:
+      "I build my personal home server to host my projects. It run on an Orange Pi 3 LTS with ARM based platform. This home server utilise Cloudflare Tunnel so it can be accessed through internet.",
     scope: "Hybrid Cloud",
     techs: ["Linux", "Docker", "FrankenPHP", "Cloudflare Tunnel"],
-    links: []
+    links: [],
   },
   {
     title: "A Day",
     image: "/img/projects/a-day.webp",
     alt: "A Day",
-    description: "A Day is a temporary camera for photos and videos. It stores media up to 24 hours then delete them automatically. A Day help you to keep your Photos clean and free of single-use media.",
+    description:
+      "A Day is a temporary camera for photos and videos. It stores media up to 24 hours then delete them automatically. A Day help you to keep your Photos clean and free of single-use media.",
     scope: "Mobile (iOS)",
     techs: ["Swift", "SwiftUI", "AVFoundation", "WidgetKit", "SwiftData"],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/ada-Batagor/batagor"
-      }
-    ]
+        url: "https://github.com/ada-Batagor/batagor",
+      },
+    ],
   },
   {
     title: "Arca",
     image: "/img/projects/arca.webp",
     alt: "Arca",
-    description: "Arca gives an audio tour on statues in Bali. Arca also able to explore statues in Bali, also their division into monumental and spiritual statues.",
+    description:
+      "Arca gives an audio tour on statues in Bali. Arca also able to explore statues in Bali, also their division into monumental and spiritual statues.",
     scope: "Mobile (iOS)",
     techs: ["Swift", "SwiftUI", "MapKit", "AVKit", "WidgetKit", "Supabase"],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/ADA-Kalcer/kalcer"
-      }
-    ]
+        url: "https://github.com/ADA-Kalcer/kalcer",
+      },
+    ],
   },
   {
     title: "Moodz",
     image: "/img/projects/moodz.webp",
     alt: "Moodz",
-    description: "Get music recomendations for your Instagram story. Moodz help you to find the most suitable music for your photos.",
+    description:
+      "Get music recomendations for your Instagram story. Moodz help you to find the most suitable music for your photos.",
     scope: "Mobile (iOS)",
     techs: ["Swift", "SwiftUI", "Create ML", "Core ML"],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/tudemaha/moodz"
-      }
-    ]
+        url: "https://github.com/tudemaha/moodz",
+      },
+    ],
   },
   {
     title: "Kamus Bali & Enggano",
     image: "/img/projects/kamus.webp",
     alt: "Kamus Bali & Enggano",
-    description: "This project is part of CIRHSS's research. The dictionary gives detailed translation for a word, including the usage example. Backed up by community support for the translation improvement. This project also supports word searches with traditional scripts.",
+    description:
+      "This project is part of CIRHSS's research. The dictionary gives detailed translation for a word, including the usage example. Backed up by community support for the translation improvement. This project also supports word searches with traditional scripts.",
     scope: "Backend",
     techs: ["Go", "Gin", "GORM", "MySQL"],
     links: [
       {
         name: "Kamus Bali",
-        url: "https://bali.cirhss.org"
+        url: "https://bali.cirhss.org",
       },
       {
         name: "Kamus Enggano",
-        url: "https://enggano.cirhss.org"
-      }
-    ]
+        url: "https://enggano.cirhss.org",
+      },
+    ],
   },
   {
     title: "Harmoni Jiwa",
     image: "/img/projects/harmoni-jiwa.webp",
     alt: "Harmoni Jiwa",
-    description: "This project is part of CIRHSS's research. Harmoni Jiwa is a platform to help people with mental disorders in a rural area. This platform connects doctors, volunteers, carers, and patients by tracking patients' mental health.",
+    description:
+      "This project is part of CIRHSS's research. Harmoni Jiwa is a platform to help people with mental disorders in a rural area. This platform connects doctors, volunteers, carers, and patients by tracking patients' mental health.",
     scope: "Backend",
     techs: ["Go", "Gin", "MySQL"],
     links: [
       {
         name: "Harmoni Jiwa",
-        url: "https://harmonijiwa.cirhss.org"
-      }
-    ]
+        url: "https://harmonijiwa.cirhss.org",
+      },
+    ],
   },
   {
     title: "Rayaska Company Profile",
     image: "/img/projects/rayaska.webp",
     alt: "Rayaska Company Profile",
-    description: "This company profile showcases Rayaska's services and company information. This website provides visitors a quick overview about Rayaska.",
+    description:
+      "This company profile showcases Rayaska's services and company information. This website provides visitors a quick overview about Rayaska.",
     scope: "Full Stack",
     techs: ["TypeScript", "Svelte", "SvelteKit", "Tailwind CSS"],
     links: [
       {
         name: "Rayaska",
-        url: "https://rayaska.com"
-      }
-    ]
+        url: "https://rayaska.com",
+      },
+    ],
   },
   {
     title: "Lovely Valentine",
     image: "/img/projects/lovely-valentine.webp",
     alt: "Lovely Valentine",
-    description: "Lovely Valentine was created for Valentine day. It can express your love to someone by making quotes and send it with an \"encryption.\"",
+    description:
+      'Lovely Valentine was created for Valentine day. It can express your love to someone by making quotes and send it with an "encryption."',
     scope: "Full Stack",
     techs: ["Go", "net/http", "Bootstrap", "MongoDB"],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/tudemaha/lovely-valentine"
+        url: "https://github.com/tudemaha/lovely-valentine",
       },
       {
         name: "Lovely Valentine",
-        url: "https://val.tudemaha.my.id"
-      }
-    ]
+        url: "https://val.tudemaha.my.id",
+      },
+    ],
   },
   {
     title: "MamMates",
     image: "/img/projects/mammates.webp",
     alt: "MamMates",
-    description: "Capstone project for Bangkit Academy 2023 Batch 2. MamMates provides a way to reduce food waste by selling food that is still edible instead of throwing it away. Machine learing technologies used to determine the food classification, the food rating, and the price.",
+    description:
+      "Capstone project for Bangkit Academy 2023 Batch 2. MamMates provides a way to reduce food waste by selling food that is still edible instead of throwing it away. Machine learing technologies used to determine the food classification, the food rating, and the price.",
     scope: "Backend & Cloud",
-    techs: ["JavaScript", "Node.js", "Express", "Sequelize", "MySQL", "Cloud Storage", "Cloud SQL", "Cloud Run"],
+    techs: [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "Sequelize",
+      "MySQL",
+      "Cloud Storage",
+      "Cloud SQL",
+      "Cloud Run",
+    ],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/MamMates/mammates-be"
-      }
-    ]
+        url: "https://github.com/MamMates/mammates-be",
+      },
+    ],
   },
   {
     title: "TrackHub",
     image: "/img/projects/trackhub.webp",
     alt: "TrackHub",
-    description: "TrackHub designed to track YouTube videos views and likes. It can be used in a competition to detect if participants use bot to gain likes.",
+    description:
+      "TrackHub designed to track YouTube videos views and likes. It can be used in a competition to detect if participants use bot to gain likes.",
     scope: "Full Stack",
     techs: ["JavaScript", "Node.js", "Bootstrap", "EJS", "MySQL"],
     links: [
       {
         name: "GitHub",
-        url: "https://github.com/tudemaha/trackhub"
-      }
-    ]
-  }
+        url: "https://github.com/tudemaha/trackhub",
+      },
+    ],
+  },
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -192,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       class="px-3 py-1 h-fit text-sm font-medium rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
                       >${tech}</span
                     >
-                  `
+                  `,
                     )
                     .join("")}
                 </div>
@@ -227,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </svg>
                       </span>
                     </a>
-                  `
+                  `,
                     )
                     .join("")}
                 </div>
@@ -238,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
-      `
+      `,
       )
       .join("");
   }
