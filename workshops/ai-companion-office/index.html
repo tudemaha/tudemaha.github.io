@@ -131,6 +131,7 @@
     
       <google-codelab-step label="Warm Up with Microsoft Excel" duration="0">
         <p>In this section, we will create a dynamic schedule table for an event rundown. By using this table, we only need to know the event&#39;s start time and duration for each activity. The table will automatically calculate the end time for each activity.</p>
+<p>If you want, download <a href="https://tudemaha.my.id/files/dynamic-rundown.xlsx" target="_blank">this Excel file</a> then move it to your working directory to make it easier to follow.</p>
 <ol type="1">
 <li>Create an Excel file, let&#39;s name it <code>rundown.xlsx</code>, and save it in your working directory.</li>
 <li>Create a table with this headers: &#34;No&#34;, &#34;Time&#34;, &#34;Duration&#34;, and &#34;Activity&#34; following the example below. <img alt="Rundown Template" style="width: 600.00px" src="img/e411ecf0c8a0f2ad.jpg"></li>
@@ -149,8 +150,184 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="The Main Quest" duration="0">
-        
+      <google-codelab-step label="Trying Claude X Excel" duration="0">
+        <p>Download <a href="https://tudemaha.my.id/files/dataset-penjualan.xlsx" target="_blank">this Excel file</a> then move it to your working directory.</p>
+<ol type="1">
+<li>Open Claude Desktop</li>
+<li>Try to ask this question <pre><code language="language-text" class="language-text">Read &#34;dataset-penjualan.xlsx&#34; using `filesystem` MCP tool, then use `markitdown` MCP tool to convert the file into markdown for efficien reading, if needed. Then, tell me, what is the dataset about?
+</code></pre>
+<pre><code language="language-text" class="language-text">Baca &#34;dataset-penjualan.xlsx&#34; pakai MCP `filesystem`, terus pakai MCP `markitdown` but konversi file itu jadi markdown biar bacanya lebih efisien, kalau perlu. Terus, kasi tau aku, tentang apa dataset itu?
+</code></pre>
+</li>
+<li>Click &#34;Allow once&#34; or &#34;Always allow&#34; if needed.</li>
+<li>Claude will read the file and convert it into markdown, then tell you what the dataset is about. <img alt="Claude Read Excel" style="width: 600.00px" src="img/9a6fc54a082a1f5e.jpg"></li>
+<li>Now, try to ask on how to fill the &#34;Nama Sales Proper&#34; to Claude. It will give you the answer. <img alt="Claude Answers Proper" style="width: 600.00px" src="img/1732349cf3c21dad.jpg"></li>
+</ol>
+<aside class="warning"><p> Be wise while using free plan of Claude. Just ask needed questions to avoid unnecessary token consumption. Claude&#39;s free tier limits users to approximately 15 to 40 messages per 5-hour window </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finish the Dataset" duration="0">
+        <ol type="1">
+<li>At cell <strong>K2</strong>, enter a formula <code>=PROPER(E2)</code> where <code>E2</code> is the &#34;broken&#34; name format, as Claude said.</li>
+<li><code>Metode Pembayaran</code> column should be filled with the payment method from the reference table. The fifth letter of the <code>ID Pesanan</code> is the payment code. Use this formula referenceto fill cell <strong>L2</strong>: <pre><code language="language-text" class="language-text">=VLOOKUP(MID(A2;5;1);Referensi!$A$1:$C$6;2;FALSE)
+</code></pre>
+</li>
+<li><code>Tipe Pelanggan</code> column should be filled with <code>Lama</code> or <code>Baru</code> based on the seventh and eighth letters of the <code>ID Pesanan</code>. BR is Baru and LM is Lama. Use this formula reference to fill cell <strong>M2</strong>: <pre><code language="language-text" class="language-text">=IF(MID(A2;7;2)=&#34;BR&#34;;&#34;Baru&#34;;&#34;Lama&#34;)
+</code></pre>
+</li>
+<li><code>Total Penjualan</code> is a multiplication of <code>Unit Terjual</code> and <code>Harga Satuan</code> column. Use this formula reference to fill cell <strong>N2</strong>: <pre><code language="language-text" class="language-text">=I2*H2
+</code></pre>
+</li>
+<li>Column <code>Diskon (%)</code> must be filled in carefully. Look at the reference table, there is the rule to give discount for each purchase. Understand the reference table or ask Claude on how to fill this column. Formula reference to fill cell <strong>O2</strong>: <pre><code language="language-text" class="language-text">=IF(AND(M2=&#34;BARU&#34;;N2&gt;50000000);20%;IF(AND(M2=&#34;LAMA&#34;;N2&gt;50000000);15%;IF(AND(M2=&#34;BARU&#34;;N2&gt;20000000);10%;0%)))
+</code></pre>
+</li>
+<li><code>Harga Setelah Diskon</code> is <code>Total Penjualan</code> minus discount amount. Formula reference to fill cell <strong>P2</strong>: <pre><code language="language-text" class="language-text">=N2-O2*N2
+</code></pre>
+</li>
+<li><code>Total Bersih</code> is <code>Harga Setelah Diskon</code> minus the admin fee. The fifth letter of the <code>ID Pesanan</code> is the payment code. Use VLOOKUP to the reference table to get the admin fee. Formula reference to fill cell <strong>Q2</strong>: <pre><code language="language-text" class="language-text">=P2-VLOOKUP(MID(A2;5;1);Referensi!$A$1:$C$6;3;FALSE)
+</code></pre>
+</li>
+<li><code>Profit</code> is obtained by subtracting the <code>Total Bersih</code> from the <code>Biaya Satuan</code> tiap <code>Unit Terjual</code>. Formula reference to fill cell <strong>R2</strong>: <pre><code language="language-text" class="language-text">=Q2-(H2*J2)
+</code></pre>
+</li>
+<li>To fill all the rows, block range <strong>K2:R2</strong>, drag the fill handle to the bottom right of the last cell in the range, then release the mouse button. The formula will automatically adjust the reference cell.</li>
+<li><code>Total</code> row is the sum of <code>Total Bersih</code> and <code>Profit</code>. Formula reference to fill <strong>Q222 and R222</strong>: <pre><code language="language-text" class="language-text">=SUM(Q2:Q221)
+=SUM(R2:R221)
+</code></pre>
+</li>
+<li><code>Rata-rata</code> row is the averate of <code>Total Bersih</code> and <code>Profit</code>. Formula reference to fill <strong>Q223 and R223</strong>: <pre><code language="language-text" class="language-text">=AVERAGE(Q2:Q221)
+=AVERAGE(R2:R221)
+</code></pre>
+</li>
+<li>Use MAX function to get the maximum of <code>Total Bersih</code> and <code>Profit</code>. Formula reference to fill <strong>Q224 and R224</strong>: <pre><code language="language-text" class="language-text">=MAX(Q2:Q221)
+=MAX(R2:R221)
+</code></pre>
+</li>
+<li>Use MIN function to get the minimum of <code>Total Bersih</code> and <code>Profit</code>. Formula reference to fill <strong>Q225 and R225</strong>: <pre><code language="language-text" class="language-text">=MIN(Q2:Q221)
+=MIN(R2:R221)
+</code></pre>
+</li>
+</ol>
+<aside class="special"><p> Pro tip: press F4 or fn + F4 to &#34;lock&#34; the reference table. This is useful while editing a formula to cycle through absolute and relative references (e.g., `A1` → `$A$1` → `$A1` → `A$1`). </p>
+</aside>
+<p> ``` </p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Get the Insights" duration="0">
+        <p>Jump to &#34;Insight&#34; sheet. We will answer the questions based on our finished dataset.</p>
+<ol type="1">
+<li>To get the total sales in Java, we can use <code>SUMIF</code> function on <code>Total Bersih</code> column based on the <code>Wilayah</code> column. Formula reference to fill cell <strong>B1</strong>: <pre><code language="language-text" class="language-text">=SUMIF(&#39;Data Penjualan&#39;!C2:C221;&#34;JAWA&#34;;&#39;Data Penjualan&#39;!N2:N221)
+</code></pre>
+</li>
+<li>To count the sales in Kalimantan, we can use <code>COUNTIF</code> function on <code>Wilayah</code> column. Formula reference to fill the cell <strong>B2</strong>: <pre><code language="language-text" class="language-text">=COUNTIF(&#39;Data Penjualan&#39;!$C$2:$C$221;&#34;KALIMANTAN&#34;)
+</code></pre>
+</li>
+<li>To know the sales profit at Surabaya, we need to sum all the profit in Surabaya city. Use <code>SUMIF</code> for this purpose. Formula reference to fill the cell <strong>B3</strong>: <pre><code language="language-text" class="language-text">=SUMIF(&#39;Data Penjualan&#39;!$D$2:$D$221;&#34;SURABAYA&#34;;&#39;Data Penjualan&#39;!$R$2:$R$221)
+</code></pre>
+</li>
+<li>We need to add up all the USB-C Hub units sold to get the number of units sold. Use <code>SUMIF</code> function for this purpose. Formula reference to fill the cell <strong>B4</strong>: <pre><code language="language-text" class="language-text">=SUMIF(&#39;Data Penjualan&#39;!$G$2:$G$221;&#34;USB-C HUB&#34;;&#39;Data Penjualan&#39;!$H$2:$H$221)
+</code></pre>
+</li>
+<li>To get the average profit of HD Webcam sales, use <code>AVERAGEIF</code> function on <code>Profit</code> column based on the <code>Nama Produk</code> column. Formula reference to fill the cell <strong>B5</strong>: <pre><code language="language-text" class="language-text">=AVERAGEIF(&#39;Data Penjualan&#39;!$G$2:$G$221;&#34;WEBCAM HD&#34;;&#39;Data Penjualan&#39;!$R$2:$R$221)
+</code></pre>
+</li>
+<li>To find out the number of sales at Sulawesi in February, use <code>COUNTIFS</code> function on <code>Wilayah</code> and <code>Tanggal Pesanan</code> columns. Formula reference to fill cell <strong>B6</strong>: <pre><code language="language-text" class="language-text">=COUNTIFS(&#39;Data Penjualan&#39;!$C$2:$C$221;&#34;SULAWESI&#34;;&#39;Data Penjualan&#39;!$B$2:$B$221;&#34;&gt;=&#34;&amp;DATE(2024;2;1);&#39;Data Penjualan&#39;!$B$2:$B$221;&#34;&lt;=&#34;&amp;DATE(2024;2;29))
+</code></pre>
+</li>
+<li>Use <code>SUMPRODUCT</code> function to get the total sales in April. <code>SUMPRODUCT</code> function multiply corresponding rows of arrays and sum the result. Formula reference to fill cell <strong>B7</strong>: <pre><code language="language-text" class="language-text">=SUMPRODUCT(&#39;Data Penjualan&#39;!$N$2:$N$221;(MONTH(&#39;Data Penjualan&#39;!B2:B221)=4)*1)
+</code></pre>
+</li>
+<li>To find the name of all sales, we can use <code>UNIQUE</code> function to get the unique values of <code>Nama Sales Proper</code> column. Formula reference to fill cell <strong>G3</strong>: <pre><code language="language-text" class="language-text">=UNIQUE(&#39;Data Penjualan&#39;!K2:K221)
+</code></pre>
+</li>
+<li>Lastly, to find profits generated by each sales, use the <code>SUMIF</code> function of the <code>Profit</code> column and each name. Formula reference to fill cell <strong>H3</strong> and after: <pre><code language="language-text" class="language-text">=SUMIF(&#39;Data Penjualan&#39;!$K$2:$K$221;Insight!G3;&#39;Data Penjualan&#39;!$R$2:$R$221)
+</code></pre>
+</li>
+</ol>
+<aside class="special"><p> Pro tip: COUNTIFS function can&#39;t process array, so we need to compare the range with DATE function. </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="The Pivot Table" duration="0">
+        <p>To get a better insight, we can use PivotTable. We will create a PivotTable to show the profit of all products per category in each city. We will also add filter region and sale date.</p>
+<ol type="1">
+<li>Go to <code>Data Penjualan</code> sheet</li>
+<li>Block the range <strong>A1:R221</strong></li>
+<li>Go to &#34;Insert&#34; &gt; &#34;PivotTable&#34;</li>
+<li>Make sure to select &#34;New worksheet&#34;, then click &#34;OK&#34;</li>
+<li>Rename the new sheet into &#34;Pivot&#34;</li>
+<li>Drag and drop each field on the right panel to Filters, Columns, Rows, and Values section. Refer to the image below to get the layout: <br><img alt="PivotTable Layout" style="width: 300.00px" src="img/c09e2aeb376bed2f.jpg"></li>
+<li>Select the PivotTable created, go to &#34;PivotTable Analyze&#34; &gt; &#34;Insert Timeline&#34;</li>
+<li>Select <code>Tanggal Pesanan</code>, then click &#34;OK&#34;</li>
+<li>You should now have a PivotTable like this: <img alt="Finish PivotTable" style="width: 600.00px" src="img/b59a3fc680f3e61c.jpg"></li>
+<li>Now it&#39;s much easier to gain insights using PivotTables.</li>
+</ol>
+<aside class="special"><p> Pro tip: Adjust the Filters, Columns, Rows, and Values section by dragging the fields to the desired section until you get the PivotTable you want. You can be creative in making PivotTable! </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Generate Report" duration="0">
+        <h2 is-upgraded>Ask Claude to Help You Generate the Report</h2>
+<p>After completing all stages, it&#39;s time to generate the report. Here&#39;s what Claude can do to help you:</p>
+<pre><code language="language-text" class="language-text">I&#39;ve filled the dataset, answer the questions, and generate a PivotTable. Now, I need to create a report based on that data. What should I put on the Word document to generate a insightful report?
+</code></pre>
+<pre><code language="language-text" class="language-text">Aku udah lengkapin datasetnya, jawabin pertanyaan di insight, dan buat PivotTable. Sekarang, aku perlu buat laporan berdasarkan data tersebut. Apa yang harus aku masukin ke dokumen Word biar laporanku informatif?
+</code></pre>
+<h2 is-upgraded>Additional Tips</h2>
+<ol type="1">
+<li>Create different variations of PivotTable to make it easier for Claude to analyze the data. Here is some examples of the PivotTable: <br> Variation 1: <br><img alt="PivotTable Variation 1" style="width: 400.00px" src="img/7fdf78642b07b014.jpg"><br> Variation 2: <br><img alt="PivotTable Variation 2" style="width: 400.00px" src="img/51c00fc8b54ccd2c.jpg"></li>
+<li>Pay close attention to what Claude generates. Make sure all of the data is correct. If it&#39;s incorrect, you can ask Claude to revise the report based on the data.</li>
+<li>Edit the report generated by Claude. It will &#34;humanize&#34; the report, it will not look like generated by AI.</li>
+<li>Add supporting charts and tables.</li>
+</ol>
+<aside class="warning"><p> Pro tip: Claude can generate reports in PDF or Word format. But, it will cost lot of token and exceed your limit. Be wise! </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="AI Statement" duration="0">
+        <p>Author, <a href="https://tudemaha.my.id" target="_blank">Tude Maha</a>, generate this Codelabs guide with the assistance of AI. These are the AI used:</p>
+<ol type="1">
+<li>Claude<ul>
+<li>Generate dummy sales data, with modification</li>
+<li>Brainstorming assistance to create a simple-to-explain Excel functions</li>
+<li>Generate example of Claude usage for Excel and Word</li>
+<li>This AI is used because it is the main AI platform used for this workshop</li>
+</ul>
+</li>
+<li>Gemini<ul>
+<li>Generate &#34;broken&#34; format for sales&#39; name</li>
+<li>This AI is used to separate the main conversation with Claude and utilize its temporary mode</li>
+</ul>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="References" duration="0">
+        <ol type="1">
+<li><a href="https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data" target="_blank">PivotTable</a></li>
+<li><a href="https://support.microsoft.com/en-us/excel/detect-formula-errors-in-excel" target="_blank">Excel Errors</a></li>
+<li><a href="https://support.microsoft.com/en-us/excel/use-conditional-formatting-to-highlight-information-in-excel" target="_blank">Conditional Formatting</a></li>
+<li>Result Examples <ul>
+<li><a href="https://tudemaha.my.id/files/dynamic-rundown-finish.xlsx" target="_blank">Dynamic Rundown</a></li>
+<li><a href="https://tudemaha.my.id/files/dataset-penjualan-finish.xlsx" target="_blank">Data Manipulation &amp; PivotTable</a></li>
+<li><a href="https://tudemaha.my.id/files/report-of-sales.docx" target="_blank">Sales Report</a></li>
+</ul>
+</li>
+</ol>
+
 
       </google-codelab-step>
     
