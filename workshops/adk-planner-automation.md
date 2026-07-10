@@ -3,7 +3,7 @@ summary: An hands-on session to build your own AI automation powered by Google A
 id: adk-planner-automation
 categories: codelab,markdown
 environments: Web
-status: Draft
+status: Published
 feedback link: https://linkedin.com/in/tudemaha
 
 # Multi-Agent with ADK for Task Planner Automation

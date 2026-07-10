@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-07-10T13:48:40+08:00",
+  "id": "ai-companion-office",
+  "duration": 0,
+  "title": "Renew Your Office Workflow with AI Companion: Let's Collaborate Claude, Excel, and Word",
+  "summary": "Hands-on session for “Renew Your Office Workflow with AI Companion” workshop. This session includes the Claude Desktop preparation and its MCP connection, followed by a simple raw data analysis from Microsoft Excel file. Microsoft Excel will be used to manipulate the data with the companion of Claude. Lastly, we will use Claude to guide us to build a report based on the data in Microsoft Word.",
+  "source": "ai-companion-office.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://linkedin.com/in/tudemaha",
+  "url": "ai-companion-office"
+}

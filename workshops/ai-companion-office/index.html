@@ -1,0 +1,166 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Renew Your Office Workflow with AI Companion: Let&#39;s Collaborate Claude, Excel, and Word</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="ai-companion-office"
+                  title="Renew Your Office Workflow with AI Companion: Let&#39;s Collaborate Claude, Excel, and Word"
+                  environment="web"
+                  feedback-link="https://linkedin.com/in/tudemaha">
+    
+      <google-codelab-step label="Getting Started" duration="0">
+        <h2 is-upgraded>Overview</h2>
+<p>AI usage enable us to have a fast productivity boost. By using AI, we can renew our Office workflow using the help of AI Companion. Claude is the main AI model/platform will be used in this session.</p>
+<p>Claude, especially Claude Desktop has the ability to connect to MCP servers. This allows Claude to access our Excel file without the need to upload it manually. This also allow us to connect to various MCP servers.</p>
+<p>Let&#39;s make this session a safe place to learn. Don&#39;t hesitate to ask questions. If you have completed several steps, please feel free to assist other participants who might need help.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ol type="1">
+<li>Internet connection</li>
+<li>Microsoft Office 2016 or above, or Microsoft Office 365</li>
+<li><a href="https://claude.com/download" target="_blank">Claude Desktop</a> installed</li>
+<li><a href="https://claude.ai/login" target="_blank">Claude account</a></li>
+<li><a href="https://bun.sh/" target="_blank">Bun</a> and <a href="https://docs.astral.sh/uv/#installation" target="_blank">uv</a> installed to start MCP server</li>
+<li>Stay calm and enthusiastic!🔥</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="MCP Connection" duration="0">
+        <h2 is-upgraded>Bun Installation</h2>
+<p>Follow instructions below based on your operating system.</p>
+<h3 is-upgraded>macOS</h3>
+<ol type="1">
+<li>Open Terminal</li>
+<li>Run the following command: <pre><code language="language-bash" class="language-bash">curl -fsSL https://bun.sh/install | bash
+</code></pre>
+</li>
+<li>Close and reopen Terminal</li>
+<li>Type <code>bun --version</code> to verify that Bun was installed successfully</li>
+</ol>
+<h3 is-upgraded>Windows</h3>
+<ol type="1">
+<li>Open Terminal or PowerShell</li>
+<li>Run the following command: <pre><code language="language-powershell" class="language-powershell">powershell -c &#34;irm bun.sh/install.ps1 | iex&#34;
+</code></pre>
+</li>
+<li>Close and reopen Terminal or PowerShell</li>
+<li>Type <code>bun --version</code> to verify that Bun was installed successfully</li>
+</ol>
+<h2 is-upgraded>uv Installation</h2>
+<p>Follow instructions below based on your operating system.</p>
+<h3 is-upgraded>macOS</h3>
+<ol type="1">
+<li>Open Terminal</li>
+<li>Run the following command: <pre><code language="language-bash" class="language-bash">curl -LsSf https://astral.sh/uv/install.sh | sh
+</code></pre>
+</li>
+<li>Close and reopen Terminal</li>
+<li>Type <code>uv --version</code> to verify that Bun was installed successfully</li>
+</ol>
+<h3 is-upgraded>Windows</h3>
+<ol type="1">
+<li>Open Terminal or PowerShell</li>
+<li>Run the following command: <pre><code language="language-powershell" class="language-powershell">powershell -ExecutionPolicy ByPass -c &#34;irm https://astral.sh/uv/install.ps1 | iex&#34;
+</code></pre>
+</li>
+<li>Close and reopen Terminal or PowerShell</li>
+<li>Type <code>uv --version</code> to verify that Bun was installed successfully</li>
+</ol>
+<h2 is-upgraded>Create a Working Directory</h2>
+<ol type="1">
+<li>Go to Finder or File Explorer, then create a folder. This folder will be your main working folder for this session.</li>
+<li>Copy your path to the folder and store in a text editor to be used for the next step.</li>
+</ol>
+<aside class="special"><p> Your absolute file path might looks like `/Users/tudemaha/Documents/excel-project` for macOS or `C:\Users\tudemaha\Documents\excel-project` for Windows. </p>
+</aside>
+<h2 is-upgraded>Connect MCP Servers to Claude Desktop</h2>
+<ol type="1">
+<li>Open Claue Desktop</li>
+<li>Click on the profile icon on the bottom left</li>
+<li>Select &#34;Settings&#34;</li>
+<li>Go to &#34;Developer&#34; tab</li>
+<li>Click on &#34;Edit Config&#34; button</li>
+<li>Open the <code>claude_desktop_config.json</code> file on the text editor (Notepad, TextEdit, or VS Code)</li>
+<li>Insert the following code at the beginning of the JSON file: <pre><code language="language-json" class="language-json">{
+  &#34;mcpServers&#34;: {
+    &#34;filesystem&#34;: {
+      &#34;command&#34;: &#34;bunx&#34;,
+      &#34;args&#34;: [
+        &#34;-y&#34;,
+        &#34;@modelcontextprotocol/server-filesystem&#34;,
+        &#34;&lt;your_working_directory_path&gt;&#34;
+      ]
+    },
+    &#34;markitdown&#34;: {
+      &#34;command&#34;: &#34;uvx&#34;,
+      &#34;args&#34;: [&#34;markitdown-mcp&#34;]
+    }
+  },
+  &#34;... other existing settings ...&#34;
+}
+</code></pre>
+</li>
+<li>Save the file and close the text editor</li>
+<li>Restart Claude Desktop for the changes to take effect</li>
+<li>Repeat step 1 to 4, make sure the <code>filesystem</code> and <code>markitdown</code> MCP connection running. <img alt="filesystem MCP Running" style="width: 600.00px" src="img/a90816a301a64666.jpg"><img alt="markitdown MCP Running" style="width: 600.00px" src="img/59a9b80d7a2878e1.jpg"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Warm Up with Microsoft Excel" duration="0">
+        <p>In this section, we will create a dynamic schedule table for an event rundown. By using this table, we only need to know the event&#39;s start time and duration for each activity. The table will automatically calculate the end time for each activity.</p>
+<ol type="1">
+<li>Create an Excel file, let&#39;s name it <code>rundown.xlsx</code>, and save it in your working directory.</li>
+<li>Create a table with this headers: &#34;No&#34;, &#34;Time&#34;, &#34;Duration&#34;, and &#34;Activity&#34; following the example below. <img alt="Rundown Template" style="width: 600.00px" src="img/e411ecf0c8a0f2ad.jpg"></li>
+<li>At cell <strong>B2</strong>, enter the starting time of the event, for example <code>08:00</code>.</li>
+<li>At cell <strong>D2</strong>, enter a formula <code>=B2+TIME(0;E2;0)</code> where <code>E2</code> is the duration of the activity in minutes.</li>
+<li>Enter the duration of the first activity in minutes at cell <strong>E2</strong>, for example <code>30</code>. Cell D2 will automatically show the end time of the activity.</li>
+<li>At cell <strong>B3</strong>, enter a formula <code>=D2</code>, it will be the starting time for the second activity.</li>
+<li>At cell <strong>D3</strong>, we will use the same formula as on step 4, but on different cell reference, so it will be <code>=B3+TIME(0;E3;0)</code>.</li>
+<li>Enter the duration of the second activity in minutes at cell <strong>E3</strong>, for example <code>45</code>.</li>
+<li>Repeat step 6 to 8 to fill in the rest of the table with adjustment of the reference cell, or you can block range <code>B3:D3</code>, drag the fill handle to the bottom right of the last cell in the range, then release the mouse button. The formula will automatically adjust the reference cell.</li>
+<li>Now you have a dynamic rundown table, you can change the start time or duration of any activity and the table will automatically update.</li>
+<li>Use the &#34;Format Painter&#34; tool to copy the format of the first row to the rest of the rows.</li>
+</ol>
+<p>After finishing the steps, you will have this dynamic rundown table. <img alt="Finished Rundown Table" style="width: 600.00px" src="img/c1f3ef91820c0e76.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="The Main Quest" duration="0">
+        
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
