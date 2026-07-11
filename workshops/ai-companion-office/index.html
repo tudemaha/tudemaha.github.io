@@ -129,27 +129,6 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Warm Up with Microsoft Excel" duration="0">
-        <p>In this section, we will create a dynamic schedule table for an event rundown. By using this table, we only need to know the event&#39;s start time and duration for each activity. The table will automatically calculate the end time for each activity.</p>
-<p>If you want, download <a href="https://tudemaha.my.id/files/dynamic-rundown.xlsx" target="_blank">this Excel file</a> then move it to your working directory to make it easier to follow.</p>
-<ol type="1">
-<li>Create an Excel file, let&#39;s name it <code>rundown.xlsx</code>, and save it in your working directory.</li>
-<li>Create a table with this headers: &#34;No&#34;, &#34;Time&#34;, &#34;Duration&#34;, and &#34;Activity&#34; following the example below. <img alt="Rundown Template" style="width: 600.00px" src="img/e411ecf0c8a0f2ad.jpg"></li>
-<li>At cell <strong>B2</strong>, enter the starting time of the event, for example <code>08:00</code>.</li>
-<li>At cell <strong>D2</strong>, enter a formula <code>=B2+TIME(0;E2;0)</code> where <code>E2</code> is the duration of the activity in minutes.</li>
-<li>Enter the duration of the first activity in minutes at cell <strong>E2</strong>, for example <code>30</code>. Cell D2 will automatically show the end time of the activity.</li>
-<li>At cell <strong>B3</strong>, enter a formula <code>=D2</code>, it will be the starting time for the second activity.</li>
-<li>At cell <strong>D3</strong>, we will use the same formula as on step 4, but on different cell reference, so it will be <code>=B3+TIME(0;E3;0)</code>.</li>
-<li>Enter the duration of the second activity in minutes at cell <strong>E3</strong>, for example <code>45</code>.</li>
-<li>Repeat step 6 to 8 to fill in the rest of the table with adjustment of the reference cell, or you can block range <code>B3:D3</code>, drag the fill handle to the bottom right of the last cell in the range, then release the mouse button. The formula will automatically adjust the reference cell.</li>
-<li>Now you have a dynamic rundown table, you can change the start time or duration of any activity and the table will automatically update.</li>
-<li>Use the &#34;Format Painter&#34; tool to copy the format of the first row to the rest of the rows.</li>
-</ol>
-<p>After finishing the steps, you will have this dynamic rundown table. <img alt="Finished Rundown Table" style="width: 600.00px" src="img/c1f3ef91820c0e76.jpg"></p>
-
-
-      </google-codelab-step>
-    
       <google-codelab-step label="Trying Claude X Excel" duration="0">
         <p>Download <a href="https://tudemaha.my.id/files/dataset-penjualan.xlsx" target="_blank">this Excel file</a> then move it to your working directory.</p>
 <ol type="1">

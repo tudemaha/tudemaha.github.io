@@ -119,7 +119,7 @@ Your absolute file path might looks like `/Users/tudemaha/Documents/excel-projec
     <img src="./img/filesystem-running.jpg" width="600" alt="filesystem MCP Running">
     <img src="./img/markitdown-running.jpg" width="600" alt="markitdown MCP Running">
 
-## Warm Up with Microsoft Excel
+<!-- ## Warm Up with Microsoft Excel
 
 In this section, we will create a dynamic schedule table for an event rundown. By using this table, we only need to know the event's start time and duration for each activity. The table will automatically calculate the end time for each activity.
 
@@ -139,7 +139,7 @@ If you want, download [this Excel file](https://tudemaha.my.id/files/dynamic-run
 11. Use the "Format Painter" tool to copy the format of the first row to the rest of the rows.
 
 After finishing the steps, you will have this dynamic rundown table.
-<img src="./img/dynamic-rundown-finish.jpg" width="600" alt="Finished Rundown Table">
+<img src="./img/dynamic-rundown-finish.jpg" width="600" alt="Finished Rundown Table"> -->
 
 ## Trying Claude X Excel
 
