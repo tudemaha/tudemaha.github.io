@@ -337,8 +337,7 @@
       <dl
         id="experience-list"
         class="relative border-l-2 border-neutral-200 dark:border-neutral-800 ml-1 md:ml-3 w-fit md:w-3/4"
-      >
-      </dl>
+      ></dl>
     </section>
     <!-- end of experiences -->
 
@@ -645,7 +644,10 @@
       >
         Projects
       </h1>
-      <div id="project-list" class="flex gap-4 w-fit md:w-3/4 flex-wrap justify-center"></div>
+      <div
+        id="project-list"
+        class="flex gap-4 w-fit md:w-3/4 flex-wrap justify-center"
+      ></div>
     </section>
     <!-- end of projects -->
 
@@ -797,5 +799,15 @@
     <script src="/js/experience.js"></script>
     <script src="/js/project.js"></script>
     <script src="/js/script.js"></script>
+
+    <!-- Vercel web analytics -->
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/<unique-path>/script.js"></script>
   </body>
 </html>
